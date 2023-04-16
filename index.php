@@ -1,3 +1,7 @@
+<?php 
+require_once './conn.inc.php'
+?>
+
 <!DOCTYPE html>
 <html lang="vi">
 
