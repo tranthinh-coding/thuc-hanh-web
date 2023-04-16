@@ -1,0 +1,21 @@
+:root {
+  --primary: 26, 92, 255;
+  --warn: 255, 186, 0;
+  --danger: 255, 71, 87;
+  --success: 70, 201, 58;
+  --dark: 30, 30, 30;
+  --light: 244, 247, 248;
+  --color: 17, 18, 20;
+
+  --background: 255, 255, 255;
+  --text: 44, 62, 80;
+  --gray-1: 249, 252, 253;
+  --gray-2: 244, 247, 248;
+  --gray-3: 240, 243, 244;
+  --gray-4: 230, 233, 234;
+
+  --theme-bg: #f4f7f8;
+  --theme-color: #2c3e50;
+  --theme-layout: #fff;
+  --theme-bg2: #eef2f5;
+}
