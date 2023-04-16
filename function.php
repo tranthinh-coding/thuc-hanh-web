@@ -9,6 +9,7 @@ if ( ! function_exists('redirect')) {
 }
 
 if ( ! function_exists('get')) {
+  /** Lay ra du lieu tu POST hoac GET, neu khong ton tai thi tra ve '' */
   function get($name, $defaultValue = '')
   {
     if (isset($_POST[$name])) {
@@ -22,6 +23,7 @@ if ( ! function_exists('get')) {
 }
 
 if ( ! function_exists('getFlashMessage')) {
+  /** Set một flash message vào session */
   function getFlashMessage($name, $defaultValue = '') {
 
   }
