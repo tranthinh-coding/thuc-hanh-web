@@ -8,11 +8,16 @@ $PORT = 3306;
 
 // connect sql
 if ( ! isset($conn)) {
-  $conn = mysqli_connect($HOST, $USER_NAME, $PASSWORD, $DB, $PORT);
-
-  if ( ! $conn) {
-    throw new Exception('Khong the ket noi database: ' 
-    . $DB . ', port: ' . $PORT 
-    . ', kiem tra ten database, port');
+  try {
+    $conn = mysqli_connect($HOST, $USER_NAME, $PASSWORD, $DB, $PORT);
+  } catch (\Exception $e) {
+    if ( ! isset($conn)) {
+      echo ('<h1>Khong the ket noi database: ' 
+      . $DB . ', port: ' . $PORT 
+      . '. <br />'
+      . 'Kiem tra xampp/laragon, ten database, port</h1>');
+      die;
+    }
   }
+
 }
