@@ -21,7 +21,10 @@ if (isset($_POST['submit'])) {
   $password = get('password');
 
   if ($name == '' || $phone == '' || $email == '' || $password == '') {
-    
+    setFlashValue('name', $name);
+    setFlashValue('phone', $phone);
+    setFlashValue('email', $email);
+    redirect('/dang-ky.php');
   }
 }
 

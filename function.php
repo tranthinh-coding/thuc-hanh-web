@@ -1,6 +1,11 @@
 <?php
 
+/**
+ * Các function hay dùng
+ */
+
 if ( ! function_exists('redirect')) {
+  /** Dùng tương tự như function header */
   function redirect($link)
   {
     header('location: ' . $link);
@@ -22,15 +27,15 @@ if ( ! function_exists('get')) {
   }
 }
 
-if ( ! function_exists('getFlashMessage')) {
-  /** Set một flash message vào session */
-  function getFlashMessage($name, $defaultValue = '') {
+if ( ! function_exists('getFlashValue')) {
+  /** lấy ra flash message từ session và loại bỏ giá trị của message */
+  function getFlashValue($name, $defaultValue = '') {
 
   }
 }
 
-if ( ! function_exists('setFlashMessage')) {
-  function setFlashMessage($name, $value = '') {
+if ( ! function_exists('setFlashValue')) {
+  function setFlashValue($name, $value = '') {
     
   }
 }
