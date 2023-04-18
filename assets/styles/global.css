@@ -1,0 +1,134 @@
+.icon-close {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.icon-close::after,
+.icon-close::before {
+  background: rgba(var(--color), 1);
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 2px;
+  border-radius: 2px;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.icon-close:hover::after,
+.icon-close:hover::before {
+  width: 12px;
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.icon-close::after {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.icon-close::before {
+  transform: rotate(-45deg);
+}
+
+.popper-container {
+  position: fixed;
+  right: 0;
+  z-index: 200000;
+  transition: all 25s ease;
+  padding: 10px 0;
+  align-items: flex-end;
+
+  bottom: auto;
+  top: 0;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+}
+
+.notification {
+  padding: 20px;
+  --border: 70, 201, 58;
+  --color: var(--background);
+
+  --opacity: 0.6;
+  position: relative;
+  max-width: 340px;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  -webkit-box-shadow: 0 10px 30px -5px rgba(0, 0, 0, var(--shadow-opacity));
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, var(--shadow-opacity));
+  overflow: hidden;
+  -webkit-clip-path: circle(145% at 100% 50%);
+  clip-path: circle(145% at 100% 50%);
+  background: rgba(var(--color), 1);
+  color: rgba(var(--text), 1);
+  margin: 3px 10px;
+
+  -webkit-transition: all 0.25s ease, max-height 0.25s ease, -webkit-transform 0.3s ease 0.1s,
+    -webkit-clip-path 0.5s ease 0.1s;
+  transition: all 0.25s ease, max-height 0.25s ease, -webkit-transform 0.3s ease 0.1s, -webkit-clip-path 0.5s ease 0.1s;
+  transition: all 0.25s ease, transform 0.3s ease 0.1s, max-height 0.25s ease, clip-path 0.5s ease 0.1s;
+  transition: all 0.25s ease, transform 0.3s ease 0.1s, max-height 0.25s ease, clip-path 0.5s ease 0.1s,
+    -webkit-transform 0.3s ease 0.1s, -webkit-clip-path 0.5s ease 0.1s;
+
+  border: 3px solid transparent;
+  border-right: 3px solid rgba(var(--border), 1);
+
+}
+
+.notification-content {
+  position: relative;
+  width: auto;
+  height: auto;
+  transition: all .25s ease .2s;
+  opacity: 1;
+}
+
+.notification-close {
+  --color: var(--text);
+  position: absolute;
+  border: 0;
+  background: transparent;
+  top: 2px;
+  right: 2px;
+  transform: scale(0.75);
+  padding: 0;
+}
+
+.notification-content-header {
+  width: 100%;
+  margin: 0;
+  padding: 0 0 6px;
+}
+
+.notification-content-header h4 {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.notification-content-text {
+  width: 100%;
+}
+
+.notification-content-text p {
+  margin: 0;
+  padding: 0;
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
