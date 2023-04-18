@@ -1,31 +1,54 @@
-<?php 
+<?php
 
-require_once '../conn.inc.php';
-require_once '../function.php';
-require_once '../constants.php';
+require_once "../autoload.php";
 
-function get($name, $default = '') {
-  if (isset($_POST[$name])) {
-    return $_POST[$name];
-  }
-  if (isset($_GET[$name])) {
-    return $_GET[$name];
-  }
-  return $default;
-}
-
-if (isset($_POST['submit'])) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $name = get('name');
-  $phone = get('phone');
   $email = get('email');
+  $phone = get('phone');
   $password = get('password');
 
-  if ($name == '' || $phone == '' || $email == '' || $password == '') {
-    setFlashValue('name', $name);
-    setFlashValue('phone', $phone);
-    setFlashValue('email', $email);
+  Session::set([
+    'name' => $name,
+    'email' => $email,
+    'phone' => $phone,
+    TB_USER_ROLE => ROLE_KHACH_HANG,
+  ]);
+
+  if ($name == '' || $email == '' || $phone == '' || $password == '') {
+    Session::set('message', 'Điền đầy đủ các trường.');
     redirect('/dang-ky.php');
   }
+
+  // insert the user into database
+  $sql = "
+    insert into " . TABLE_USER
+    . " ( "
+    . TB_USER_NAME . ","
+    . TB_USER_PASSWORD . ","
+    . TB_USER_EMAIL . ","
+    . TB_USER_PHONE . ","
+    . TB_USER_ROLE
+    . " ) "
+    . "values ( "
+    . "'$name', "
+    . "'$email' ,"
+    . "'$phone' ,"
+    . "'$password' ,"
+    . "'" . ROLE_KHACH_HANG . "'"
+    . ")";
+
+  $result = mysqli_query($conn, $sql);
+
+  if (! $result) {
+    Session::set('message', 'Đăng ký không thành công');
+    redirect('/dang-ky.php');
+  }
+
+  // TODO: get id user before redirect to index page
+
+  redirect('/index.php');
 }
 
+Session::set('message', 'Để method POST');
 redirect('/dang-ky.php');
