@@ -1,4 +1,4 @@
-<?php require_once './conn.inc.php' ?>
+<?php require_once './autoload.php' ?>
 
 <!DOCTYPE html>
 <html lang="vi">

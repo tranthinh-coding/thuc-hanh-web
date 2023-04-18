@@ -13,10 +13,8 @@ if ( ! function_exists('redirect')) {
   }
 }
 
-if ( ! function_exists('get')) {
-  /** Lay ra du lieu tu POST hoac GET, neu khong ton tai thi tra ve '' */
-  function get($name, $defaultValue = '')
-  {
+if (! function_exists('getForm')) {
+  function getForm($name, $defaultValue = null) {
     if (isset($_POST[$name])) {
       return $_POST[$name];
     }
@@ -27,15 +25,18 @@ if ( ! function_exists('get')) {
   }
 }
 
-if ( ! function_exists('getFlashValue')) {
-  /** lấy ra flash message từ session và loại bỏ giá trị của message */
-  function getFlashValue($name, $defaultValue = '') {
+if ( ! function_exists('get')) {
+  /** Lay ra du lieu tu POST hoac GET, neu khong ton tai thi tra ve '' */
+  function get($name, $defaultValue = null)
+  {
+    if (is_array($name)) {
+      $val = [];
+      foreach ($name as $n) {
+        $val[] = getForm($n, $defaultValue);
+      }
+      return $val;
+    }
 
-  }
-}
-
-if ( ! function_exists('setFlashValue')) {
-  function setFlashValue($name, $value = '') {
-    
+    return getForm($name, $defaultValue);
   }
 }
