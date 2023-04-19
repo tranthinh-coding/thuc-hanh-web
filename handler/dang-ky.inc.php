@@ -56,7 +56,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     redirect('/dang-ky.php');
   }
 
-  // TODO: get id user before redirect to index page
+  $id = mysqli_insert_id($conn);
+  Session::set('user_id', $id);
 
   redirect('/index.php');
 }
