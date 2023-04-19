@@ -40,3 +40,25 @@ if ( ! function_exists('get')) {
     return getForm($name, $defaultValue);
   }
 }
+
+if (!function_exists('reduceName')) {
+  /**
+   * Xoa bo cac khoang trang thua o dau va cuoi chuoi
+   * Xoa bo cac khoang trang thua o giua, moi tu chi cach nhau 1 khoang trang
+   */
+  function reduceName($name)
+  {
+    $splitName = explode(' ', trim($name));
+    $nameReduced = [];
+    foreach ($splitName as $letter) {
+      // neu cuoi mang la mot tu thi them ki tu trang
+      if (end($nameReduced) != ' ' && count($nameReduced)) {
+        $nameReduced[] = ' ';
+      }
+      if (trim($letter) != '') {
+        $nameReduced[] = trim($letter);
+      }
+    }
+    return trim(join($nameReduced));
+  }
+}
