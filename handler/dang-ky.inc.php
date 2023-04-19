@@ -3,10 +3,10 @@
 require_once "../autoload.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $name = get('name');
-  $email = get('email');
-  $phone = get('phone');
-  $password = get('password');
+  $name = reduceName(get('name'));
+  $email = trim(get('email'));
+  $phone = trim(get('phone'));
+  $password = trim(get('password'));
 
   Session::set([
     'name' => $name,
@@ -17,6 +17,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   if ($name == '' || $email == '' || $phone == '' || $password == '') {
     Session::set('message', 'Điền đầy đủ các trường.');
+    redirect('/dang-ky.php');
+  }
+
+  // check $email hop le
+  if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    Session::set('message', 'Email không đúng định dạng.');
+    redirect('/dang-ky.php');
+  }
+
+  if (!preg_match("/^[A-Za-z\s]+$/", $name)) {
+    Session::set('message', 'Họ tên chỉ được gồm các chữ cái a-z hoặc A-Z và khoảng trắng.');
     redirect('/dang-ky.php');
   }
 
@@ -40,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   $result = mysqli_query($conn, $sql);
 
-  if (! $result) {
+  if (!$result) {
     Session::set('message', 'Đăng ký không thành công');
     redirect('/dang-ky.php');
   }
