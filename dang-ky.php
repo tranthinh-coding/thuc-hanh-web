@@ -21,7 +21,7 @@
       <div class="notification">
         <div class="notification-content">
           <header class="notification-content-header">
-            <h4>Đăng nhập không thành công</h4>
+            <h4>Đăng ký không thành công</h4>
           </header>
           <p class="notification-content-text"><?php echo $message ?></p>
         </div>
@@ -33,7 +33,7 @@
   <div class="container">
     <div class="form-container">
       <form class="form" action="/handler/dang-ky.inc.php" method="post">
-        <h3 class="form-heading">Đăng nhập</h3>
+        <h3 class="form-heading">Đăng ký</h3>
         <div class="form-group label-top">
           <label for="45gy35g" class="form-label"> Họ tên </label>
           <input id="45gy35g" placeholder="Tên đăng nhập" type="text" class="form-control" name="name"
