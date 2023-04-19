@@ -33,7 +33,9 @@
   <div class="container">
     <div class="form-container">
       <form class="form" action="/handler/dang-ky.inc.php" method="post">
-        <h3 class="form-heading">Đăng ký</h3>
+        <div class="form-heading">
+          <h3>Đăng ký</h3>
+        </div>
         <div class="form-group label-top">
           <label for="45gy35g" class="form-label"> Họ tên </label>
           <input id="45gy35g" placeholder="Tên đăng nhập" type="text" class="form-control" name="name"
@@ -58,6 +60,9 @@
         </div>
 
         <div class="form-btns">
+          <a href="dang-nhap.php">
+            <div class='button shadow' name="submit">Đăng nhập</div>
+          </a>
           <button class='button' name="submit">Đăng ký</button>
         </div>
       </form>
