@@ -1,10 +1,10 @@
-<?php require_once './autoload.php' ?>
+<?php require_once 'autoload.php' ?>
 
 <!DOCTYPE html>
 <html lang="vi">
 
 <head>
-  <?php include_once "./tag-head.php" ?>
+  <?php include_once "tag-head.php" ?>
 
   <link rel="stylesheet" href="/assets/styles/form.css">
 </head>
