@@ -132,3 +132,38 @@
   font-size: 0.75rem;
   line-height: 1rem;
 }
+
+.button {
+  --color: var(--primary);
+
+  padding: 12px 14px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: all .25s ease;
+  background: rgba(var(--color), 1);
+  border-radius: 12px;
+  color: #fff;
+}
+
+.button.shadow {
+  background: rgba(var(--background), 1);
+  color: rgba(var(--text), 1);
+  overflow: hidden;
+
+  box-shadow: 0 0px 20px 0 rgba(0, 0, 0, var(--shadow-opacity));
+}
+
+.button:hover {
+  box-shadow: 0 10px 20px -10px rgba(var(--color), 1);
+  transform: translateY(-3px);
+}
+
+.button.shadow:hover {
+  box-shadow: 0 8px 25px 0 rgba(0, 0, 0, var(--shadow-opacity));
+  transform: translateY(-3px);
+}
