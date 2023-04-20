@@ -13,6 +13,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     redirect('../');
   }
 
+  // check $email hop le
+  if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    Session::set('message', 'Email không đúng định dạng.');
+    redirect('../');
+  }
+
+  if (!preg_match("/^[A-Za-z\s]+$/", $name)) {
+    Session::set('message', 'Họ tên chỉ được gồm các chữ cái a-z hoặc A-Z và khoảng trắng.');
+    redirect('../');
+  }
+
+  
+
   Session::set('message', "Gửi lời nhắn tới người quản trị thành công");
   redirect('../');
 }

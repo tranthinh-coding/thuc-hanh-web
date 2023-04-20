@@ -27,6 +27,19 @@ if (! function_exists('getForm')) {
 
 if ( ! function_exists('get')) {
   /** Lay ra du lieu tu POST hoac GET, neu khong ton tai thi tra ve '' */
+  /**
+   * get('name') => tra ve name tu method POST hoac method GET
+   * 
+   * get([
+   *  'name',
+   *  'email'
+   * ]) 
+   * => trả về mảng có dạng 
+   * [
+   *    'email' => 'email@example.com',
+   *    'name' => 'Hi man',
+   * ]
+   */
   function get($name, $defaultValue = null)
   {
     if (is_array($name)) {
