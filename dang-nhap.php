@@ -10,29 +10,11 @@
 </head>
 
 <body>
-  <div class="popper-container">
-    <script type="text/javascript">
-      function closeNotification() {
-        document.querySelector('.notification').style.display = 'none';
-      }
-    </script>
-
-    <?php if ($message = Session::clear()->get('message')): ?>
-      <div class="notification">
-        <div class="notification-content">
-          <header class="notification-content-header">
-            <h4>Đăng nhập không thành công</h4>
-          </header>
-          <p class="notification-content-text"><?php echo $message ?></p>
-        </div>
-        <div class="notification-close"><i class="icon-close" onclick="closeNotification()"></i></div>
-      </div>
-    <?php endif ?>
-  </div>
+  <?php require_once 'thong-bao.php' ?>
 
   <div class="container">
     <div class="form-container">
-      <form class="form" action="/handler/dang-ky.inc.php" method="post">
+      <form class="form" action="/handler/dang-nhap.inc.php" method="post">
         <div class="form-heading">
           <h3>Đăng nhập</h3>
         </div>

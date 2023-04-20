@@ -15,7 +15,7 @@ define('TB_USER_PASSWORD', 'mat_khau');
 define('TB_USER_EMAIL', 'email');
 define('TB_USER_PHONE', 'so_dien_thoai');
 define('TB_USER_ROLE', 'vai_tro');
-
+define('TB_USER_ADDRESS', 'dia_chi');
 
 define('TABLE_CONTACT', 'lien_he');
 define('TABLE_PRODUCTS', 'san_pham');

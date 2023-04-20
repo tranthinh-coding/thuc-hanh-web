@@ -36,8 +36,8 @@ if ( ! function_exists('get')) {
       }
       return $val;
     }
-
-    return getForm($name, $defaultValue);
+    // trim: loại bỏ khoảng trắng đầu và cuối chuỗi sau khi được trả về từ hàm getForm
+    return trim(getForm($name, $defaultValue));
   }
 }
 

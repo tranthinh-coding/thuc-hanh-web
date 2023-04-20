@@ -4,9 +4,9 @@ require_once "../autoload.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $name = reduceName(get('name'));
-  $email = trim(get('email'));
-  $phone = trim(get('phone'));
-  $password = trim(get('password'));
+  $email = get('email');
+  $phone = get('phone');
+  $password = get('password');
 
   Session::set([
     'name' => $name,
@@ -15,8 +15,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     TB_USER_ROLE => ROLE_KHACH_HANG,
   ]);
 
-  if ($name == '' || $email == '' || $phone == '' || $password == '') {
-    Session::set('message', 'Điền đầy đủ các trường.');
+  if (!$name || !$email || !$phone || !$password) {
+    Session::set([
+      'message' => 'Điền đầy đủ các trường.'
+    ]);
     redirect('/dang-ky.php');
   }
 
@@ -36,16 +38,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     insert into " . TABLE_USER
     . " ( "
     . TB_USER_NAME . ","
-    . TB_USER_PASSWORD . ","
     . TB_USER_EMAIL . ","
+    . TB_USER_PASSWORD . ","
     . TB_USER_PHONE . ","
     . TB_USER_ROLE
     . " ) "
     . "values ( "
     . "'$name', "
     . "'$email' ,"
-    . "'$phone' ,"
     . "'$password' ,"
+    . "'$phone' ,"
     . "'" . ROLE_KHACH_HANG . "'"
     . ")";
 
@@ -56,6 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     redirect('/dang-ky.php');
   }
 
+  // lấy ra id cuối cùng sau khi insert, đó là id của user
   $id = mysqli_insert_id($conn);
   Session::set('user_id', $id);
 
