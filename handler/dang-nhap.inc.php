@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   if (!$email || !$password) {
     Session::set('message', 'Nhập đầy đủ các trường');
-    redirect('/dang-nhap.php');
+    redirect('../dang-nhap.php');
   }
 
   // lay ra thong tin tu database
@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   if (!$result || mysqli_num_rows($result) != 1) {
     Session::set('message', 'Email hoặc mật khẩu không chính xác');
-    redirect('/dang-nhap.php');
+    redirect('../dang-nhap.php');
   }
 
   $user = mysqli_fetch_array($result);
@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   ]);
 
   Session::set('message', 'Đăng nhập thành công');
-  redirect('/');
+  redirect('../');
 }
 
-redirect('/dang-nhap.php');
+redirect('../dang-nhap.php');
