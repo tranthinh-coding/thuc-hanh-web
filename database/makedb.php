@@ -14,10 +14,10 @@ mysqli_query($conn, 'CREATE DATABASE ' . DB_NAME);
 mysqli_query($conn, 'use ' . DB_NAME);
 
 /** Tao table nguoi dung */
-mysqli_query($conn, 'DROP TABLE IF EXISTS ' . TABLE_USER);
+mysqli_query($conn, 'DROP TABLE IF EXISTS nguoi_dung');
 mysqli_query(
   $conn,
-  'CREATE TABLE `' . TABLE_USER . '` ('
+  'CREATE TABLE `nguoi_dung` ('
   . 'id INT PRIMARY KEY AUTO_INCREMENT, '
   . 'ho_ten VARCHAR(200) DEFAULT NULL, '
   . 'email VARCHAR(200) DEFAULT NULL UNIQUE, '
@@ -30,10 +30,10 @@ mysqli_query(
 );
 
 /** Tao table san pham */
-mysqli_query($conn, 'DROP TABLE IF EXISTS ' . TABLE_PRODUCTS);
+mysqli_query($conn, 'DROP TABLE IF EXISTS san_pham');
 mysqli_query(
   $conn,
-  'CREATE TABLE `' . TABLE_PRODUCTS . '` ('
+  'CREATE TABLE `san_pham` ('
   . 'id INT PRIMARY KEY AUTO_INCREMENT, '
   . 'ten_san_pham VARCHAR(255) DEFAULT NULL, '
   . 'gia FLOAT DEFAULT NULL, '
@@ -46,10 +46,10 @@ mysqli_query(
 );
 
 /** Tao table lien he */
-mysqli_query($conn, 'DROP TABLE IF EXISTS ' . TABLE_CONTACT);
+mysqli_query($conn, 'DROP TABLE IF EXISTS lien_he');
 mysqli_query(
   $conn,
-  'CREATE TABLE `' . TABLE_CONTACT . '` ('
+  'CREATE TABLE `lien_he` ('
   . 'id INT PRIMARY KEY AUTO_INCREMENT, '
   . 'ho_ten VARCHAR(200) DEFAULT NULL, '
   . 'email VARCHAR(200) DEFAULT NULL, '
