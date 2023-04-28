@@ -24,7 +24,7 @@
 
       <div class="form-group label-top">
         <label class="form-label" for="fnsdcm">Mật khẩu</label>
-        <input id="fnsdcm" placeholder="Mật khẩu" type="text" name="password" class="form-control">
+        <input id="fnsdcm" placeholder="Mật khẩu" type="password" name="mat_khau" class="form-control">
       </div>
 
       <div class="form-btns">

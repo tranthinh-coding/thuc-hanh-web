@@ -146,7 +146,7 @@
 
   transition: all .25s ease;
   background: rgba(var(--color), 1);
-  border-radius: 12px;
+  border-radius: 15px;
   color: #fff;
 }
 

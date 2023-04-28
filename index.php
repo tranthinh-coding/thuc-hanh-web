@@ -2,143 +2,145 @@
 
 <!DOCTYPE html>
 <html lang="vi">
+  <head>
+    <?php include_once "./tag-head.php" ?>
 
-<head>
-  <?php include_once "./tag-head.php" ?>
+    <link rel="stylesheet" href="./assets/styles/form.css" />
+  </head>
 
-  <link rel="stylesheet" href="./assets/styles/form.css">
-</head>
+  <body>
+    <?php require_once './thong-bao.php' ?>
 
-<body>
-  <?php require_once './thong-bao.php' ?>
+    <?php require_once './app-header.php'  ?>
 
-  <header>
-    <nav class="container">
-      <div class="nav-right">
-        <a href="dang-ky.php">
-          <button class="button shadow">Đăng ký</button>
-        </a>
-        <a href="dang-nhap.php">
-          <button class="button">Đăng nhập</button>
-        </a>
+    <section class="container content-container">
+      <aside></aside>
+
+      <main></main>
+    </section>
+
+    <section class="container form-section">
+      <form class="form" action="./handler/lien-he.inc.php" method="post">
+        <div class="form-heading">
+          <h3>Liên hệ với chúng tôi</h3>
+        </div>
+        <div class="form-group label-top">
+          <label for="45gy35g" class="form-label"> Họ tên </label>
+          <input
+            id="45gy35g"
+            placeholder="Tên đăng nhập"
+            type="text"
+            class="form-control"
+            name="ho_ten"
+            value="<?php echo Session::get('ho_ten') ?>"
+          />
+        </div>
+        <div class="form-group label-top">
+          <label for="sdsdwe" class="form-label"> Số điện thoại </label>
+          <input
+            id="sdsdwe"
+            placeholder="Số điện thoại"
+            type="text"
+            class="form-control"
+            name="so_dien_thoai"
+            value="<?php echo Session::get('so_dien_thoai') ?>"
+          />
+        </div>
+
+        <div class="form-group label-top">
+          <label class="form-label" for="4f456u">Email</label>
+          <input
+            id="4f456u"
+            placeholder="Email"
+            type="text"
+            class="form-control"
+            name="email"
+            value="<?php echo Session::get('email') ?>"
+          />
+        </div>
+
+        <div class="form-group label-top">
+          <label class="form-label" for="fnsdcm">Lời nhắn</label>
+          <textarea
+            row="40"
+            id="fnsdcm"
+            placeholder="Lời nhắn"
+            name="loi_nhan"
+            class="form-control"
+          ><?php echo Session::get('loi_nhan') ?></textarea>
+        </div>
+
+        <div class="form-btns">
+          <button class="button" name="submit">Gửi lời nhắn</button>
+        </div>
+      </form>
+    </section>
+
+    <footer class="container">
+      <div class="card">
+        <div class="card-image">
+          <img src="./assets/images/tvthink.jpg" />
+        </div>
+        <h3 class="card-title">Trần Văn Thinh</h3>
+        <p class="card-content">02-12-2001</p>
+        <div class="float-box">
+          <p class="button shadow">20103100350</p>
+        </div>
       </div>
-    </nav>
-
-    <banner></banner>
-  </header>
-
-  <section class="container content-container">
-    <aside>
-
-    </aside>
-
-    <main>
-
-    </main>
-  </section>
-
-  <section class="container form-section">
-    <form class="form" action="./handler/lien-he.inc.php" method="post">
-      <div class="form-heading">
-        <h3>Liên hệ với chúng tôi</h3>
+      <div class="card">
+        <div class="card-image">
+          <img src="./assets/images/tvthink.jpg" />
+        </div>
+        <h3 class="card-title">Phạm Nhật Tân</h3>
+        <p class="card-content">02-12-2002</p>
+        <div class="float-box">
+          <p class="button shadow">20103100350</p>
+        </div>
       </div>
-      <div class="form-group label-top">
-        <label for="45gy35g" class="form-label"> Họ tên </label>
-        <input id="45gy35g" placeholder="Tên đăng nhập" type="text" class="form-control" name="name"
-          value="<?php echo Session::get('name') ?>">
+      <div class="card">
+        <div class="card-image">
+          <img src="./assets/images/tvthink.jpg" />
+        </div>
+        <h3 class="card-title">Bùi Thanh Trà</h3>
+        <p class="card-content">02-12-2001</p>
+        <div class="float-box">
+          <p class="button shadow">20103100350</p>
+        </div>
       </div>
-      <div class="form-group label-top">
-        <label for="sdsdwe" class="form-label"> Số điện thoại </label>
-        <input id="sdsdwe" placeholder="Số điện thoại" type="text" class="form-control" name="phone"
-          value="<?php echo Session::get('phone') ?>">
-      </div>
+    </footer>
 
-      <div class="form-group label-top">
-        <label class="form-label" for="4f456u">Email</label>
-        <input id="4f456u" placeholder="Email" type="text" class="form-control" name="email"
-          value="<?php echo Session::get('email') ?>">
+    <style>
+      .form {
+        position: relative;
+        filter: drop-shadow(0 8px 32px rgba(0, 0, 0, 0.021));
+      }
 
-      </div>
+      section {
+        width: 100%;
+        margin-top: 50px;
+        margin-top: 50px;
+      }
 
-      <div class="form-group label-top">
-        <label class="form-label" for="fnsdcm">Lời nhắn</label>
-        <textarea row="40" id="fnsdcm" placeholder="Lời nhắn" type="text" name="contact-message" class="form-control">
-        </textarea>
-      </div>
+      .content-container {
+        display: flex;
+      }
 
-      <div class="form-btns">
-        <button class='button' name="submit">Gửi lời nhắn</button>
-      </div>
-    </form>
-  </section>
+      section.form-section {
+        display: flex;
+        justify-content: center;
+      }
 
-  <footer class="container">
-    <div class="card">
-      <div class="card-image">
-        <img src="./assets/images/tvthink.jpg" />
-      </div>
-      <h3 class="card-title">Trần Văn Thinh</h3>
-      <p class="card-content"> 02-12-2001 </p>
-      <div class="float-box">
-        <p class="button shadow">20103100350</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-image">
-        <img src="./assets/images/tvthink.jpg" />
-      </div>
-      <h3 class="card-title">Phạm Nhật Tân</h3>
-      <p class="card-content"> 02-12-2002 </p>
-      <div class="float-box">
-        <p class="button shadow">20103100350</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-image">
-        <img src="./assets/images/tvthink.jpg" />
-      </div>
-      <h3 class="card-title">Bùi Thanh Trà</h3>
-      <p class="card-content"> 02-12-2001 </p>
-      <div class="float-box">
-        <p class="button shadow">20103100350</p>
-      </div>
-    </div>
-  </footer>
+      aside {
+        width: 300px;
+        background: #ddd;
+        height: 600px;
+      }
 
-  <style>
-    .form {
-      position: relative;
-      filter: drop-shadow(0 8px 32px rgba(0, 0, 0, 0.021));
-    }
-
-    section {
-      width: 100%;
-      margin-top: 50px;
-      margin-top: 50px;
-    }
-
-    .content-container {
-      display: flex;
-    }
-
-    section.form-section {
-      display: flex;
-      justify-content: center;
-    }
-
-    aside {
-      width: 300px;
-      background: #ddd;
-      height: 600px;
-    }
-
-    main {
-      height: 600px;
-      width: 100%;
-      background: rgb(var(--warn));
-    }
-
-  </style>
-</body>
-
+      main {
+        height: 600px;
+        width: 100%;
+        background: rgb(var(--warn));
+      }
+    </style>
+  </body>
 </html>

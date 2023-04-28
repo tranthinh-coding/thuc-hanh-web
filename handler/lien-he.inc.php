@@ -3,12 +3,19 @@
 require_once "../autoload.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $name = get('name');
-  $phone = get('phone');
+  $ho_ten = get('ho_ten');
+  $so_dien_thoai = get('so_dien_thoai');
   $email = get('email');
-  $message = get('contact-message');
+  $loi_nhan = get('loi_nhan');
 
-  if (!$name || !$email || !$phone || !$message) {
+  Session::set([
+    'ho_ten' => $ho_ten,
+    'so_dien_thoai' => $so_dien_thoai,
+    'email' => $email,
+    'loi_nhan' => $loi_nhan,
+  ]);
+
+  if (!$ho_ten || !$email || !$so_dien_thoai || !$loi_nhan) {
     Session::set('message', "Điền đầy đủ các trường");
     redirect('../');
   }
@@ -19,15 +26,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     redirect('../');
   }
 
-  if (!preg_match("/^[A-Za-z\s]+$/", $name)) {
+  if (!preg_match("/^[A-Za-z\s]+$/", $ho_ten)) {
     Session::set('message', 'Họ tên chỉ được gồm các chữ cái a-z hoặc A-Z và khoảng trắng.');
     redirect('../');
   }
 
-  
+  try {
+    // insert vao database
+    $sql = "INSERT INTO lien_he (ho_ten, email, so_dien_thoai, loi_nhan)
+      values (\"$ho_ten\", \"$email\", \"$so_dien_thoai\", \"$loi_nhan\")";
 
-  Session::set('message', "Gửi lời nhắn tới người quản trị thành công");
-  redirect('../');
+    mysqli_query($conn, $sql);
+
+    Session::set('message', "Gửi lời nhắn tới người quản trị thành công");
+    redirect('../');
+  } catch (\Throwable $th) {
+    Session::set('message', 'Có lỗi xảy ra, không thể gửi lời nhắn tới quản trị viên');
+    redirect('../dang-ky.php');
+  }
 }
 
 redirect('../');

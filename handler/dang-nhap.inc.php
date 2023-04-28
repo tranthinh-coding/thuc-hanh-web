@@ -4,18 +4,17 @@ require_once "../autoload.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $email = get('email');
-  $password = get('password');
+  $mat_khau = get('mat_khau');
 
   Session::set('email', $email);
 
-  if (!$email || !$password) {
+  if (!$email || !$mat_khau) {
     Session::set('message', 'Nhập đầy đủ các trường');
     redirect('../dang-nhap.php');
   }
 
   // lay ra thong tin tu database
-  $query = "SELECT * FROM " . TABLE_USER
-    . " where " . TB_USER_EMAIL . " = '$email' and " . TB_USER_PASSWORD . " = '$password'";
+  $query = "SELECT * FROM nguoi_dung WHERE email = \"$email\" and mat_khau = \"$mat_khau\"";
 
   $result = mysqli_query($conn, $query);
 
@@ -28,11 +27,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   // lưu thông tin vào session
   Session::set([
-    TB_USER_EMAIL => $user[TB_USER_EMAIL],
-    TB_USER_NAME => $user[TB_USER_NAME],
-    TB_USER_PHONE => $user[TB_USER_PHONE],
-    TB_USER_ADDRESS => $user[TB_USER_ADDRESS],
-    TB_USER_ROLE => $user[TB_USER_ROLE],
+    'email' => $user['email'],
+    'ho_ten' => $user['ho_ten'],
+    'so_dien_thoai' => $user['so_dien_thoai'],
+    'dia_chi' => $user['dia_chi'],
+    'vai_tro' => $user['vai_tro'],
   ]);
 
   Session::set('message', 'Đăng nhập thành công');

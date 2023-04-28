@@ -18,26 +18,26 @@
         <h3>Đăng ký</h3>
       </div>
       <div class="form-group label-top">
-        <label for="45gy35g" class="form-label"> Họ tên </label>
-        <input id="45gy35g" placeholder="Tên đăng nhập" type="text" class="form-control" name="name"
-          value="<?php echo Session::get('name', ['clear' => true]) ?>">
+        <label for="ho_ten" class="form-label"> Họ tên </label>
+        <input id="ho_ten" placeholder="Tên đăng nhập" type="text" class="form-control" name="ho_ten"
+          value="<?php echo Session::get('ho_ten', ['clear' => true]) ?>">
       </div>
       <div class="form-group label-top">
-        <label for="sdsdwe" class="form-label"> Số điện thoại </label>
-        <input id="sdsdwe" placeholder="Số điện thoại" type="text" class="form-control" name="phone"
-          value="<?php echo Session::get('phone', ['clear' => true]) ?>">
+        <label for="sdt" class="form-label"> Số điện thoại </label>
+        <input id="sdt" placeholder="Số điện thoại" type="text" class="form-control" name="so_dien_thoai"
+          value="<?php echo Session::get('so_dien_thoai', ['clear' => true]) ?>">
       </div>
 
       <div class="form-group label-top">
-        <label class="form-label" for="4f456u">Email</label>
-        <input id="4f456u" placeholder="Email" type="text" class="form-control" name="email"
+        <label class="form-label" for="email">Email</label>
+        <input id="email" placeholder="Email" type="text" class="form-control" name="email"
           value="<?php echo Session::get('email', ['clear' => true]) ?>">
 
       </div>
 
       <div class="form-group label-top">
-        <label class="form-label" for="fnsdcm">Mật khẩu</label>
-        <input id="fnsdcm" placeholder="Mật khẩu" type="text" name="password" class="form-control">
+        <label class="form-label" for="mk">Mật khẩu</label>
+        <input id="mk" placeholder="Mật khẩu" type="password" name="mat_khau" class="form-control">
       </div>
 
       <div class="form-btns">

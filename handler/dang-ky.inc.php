@@ -3,19 +3,19 @@
 require_once "../autoload.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $name = reduceName(get('name'));
+  $ho_ten = reduceName(get('ho_ten'));
   $email = get('email');
-  $phone = get('phone');
-  $password = get('password');
+  $so_dien_thoai = get('so_dien_thoai');
+  $mat_khau = get('mat_khau');
 
   Session::set([
-    'name' => $name,
+    'ho_ten' => $ho_ten,
     'email' => $email,
-    'phone' => $phone,
-    TB_USER_ROLE => ROLE_KHACH_HANG,
+    'so_dien_thoai' => $so_dien_thoai,
+    'vai_tro' => 'KH',
   ]);
 
-  if (!$name || !$email || !$phone || !$password) {
+  if (!$ho_ten || !$email || !$so_dien_thoai || !$mat_khau) {
     Session::set([
       'message' => 'Điền đầy đủ các trường.'
     ]);
@@ -28,39 +28,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     redirect('../dang-ky.php');
   }
 
-  if (!preg_match("/^[A-Za-z\s]+$/", $name)) {
+  if (!preg_match("/^[A-Za-z\s]+$/", $ho_ten)) {
     Session::set('message', 'Họ tên chỉ được gồm các chữ cái a-z hoặc A-Z và khoảng trắng.');
     redirect('../dang-ky.php');
   }
 
-  // insert the user into database
-  $sql = "
-    insert into " . TABLE_USER
-    . " ( "
-    . TB_USER_NAME . ","
-    . TB_USER_EMAIL . ","
-    . TB_USER_PASSWORD . ","
-    . TB_USER_PHONE
-    . " ) "
-    . "values ( "
-    . "'$name', "
-    . "'$email' ,"
-    . "'$password' ,"
-    . "'$phone'"
-    . ")";
+  try {
+    // insert the user into database
+    $sql = "insert into nguoi_dung (ho_ten, email, mat_khau, so_dien_thoai) 
+      values ( \"$ho_ten\", \"$email\", \"$mat_khau\", \"$so_dien_thoai\")"; // " la ky tu dac biet nen can them \"
 
-  $result = mysqli_query($conn, $sql);
+    $result = mysqli_query($conn, $sql);
 
-  if (!$result) {
+    // lấy ra id cuối cùng sau khi insert, đó là id của user
+    $id = mysqli_insert_id($conn);
+
+    Session::set('user_id', $id);
+    Session::set('message', 'Đăng ký thành công');
+
+    redirect('../index.php');
+  } catch (\Throwable $th) {
     Session::set('message', 'Đăng ký không thành công');
     redirect('../dang-ky.php');
   }
-
-  // lấy ra id cuối cùng sau khi insert, đó là id của user
-  $id = mysqli_insert_id($conn);
-  Session::set('user_id', $id);
-
-  redirect('../index.php');
 }
 
 Session::set('message', 'Để method POST');
