@@ -4,7 +4,7 @@
  * Các function hay dùng
  */
 
-if ( ! function_exists('redirect')) {
+if (!function_exists('redirect')) {
   /** Dùng tương tự như function header */
   function redirect($link)
   {
@@ -13,8 +13,9 @@ if ( ! function_exists('redirect')) {
   }
 }
 
-if (! function_exists('getForm')) {
-  function getForm($name, $defaultValue = null) {
+if (!function_exists('getForm')) {
+  function getForm($name, $defaultValue = null)
+  {
     if (isset($_POST[$name])) {
       return $_POST[$name];
     }
@@ -25,7 +26,7 @@ if (! function_exists('getForm')) {
   }
 }
 
-if ( ! function_exists('get')) {
+if (!function_exists('get')) {
   /** Lay ra du lieu tu POST hoac GET, neu khong ton tai thi tra ve '' */
   /**
    * get('name') => tra ve name tu method POST hoac method GET
@@ -73,5 +74,13 @@ if (!function_exists('reduceName')) {
       }
     }
     return trim(join($nameReduced));
+  }
+}
+
+if (!function_exists('formatCurrency')) {
+
+  function formatCurrency($amount)
+  {
+    return number_format($amount, 0);
   }
 }
