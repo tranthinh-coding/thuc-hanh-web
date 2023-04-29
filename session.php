@@ -2,14 +2,6 @@
 
 class Session
 {
-  private static $clear = false;
-
-  public static function clear()
-  {
-    self::$clear = true;
-    return new static();
-  }
-
   /**
    * @var string|array $key
    * @var mixed $options [clear, default]
@@ -25,7 +17,7 @@ class Session
 
     $options = array_merge($defaultOptions, $options);
 
-    $clear = $options['clear'] ? true : self::$clear;
+    $clear = $options['clear'];
 
     if (is_array($key)) {
       $val = [];
@@ -77,5 +69,24 @@ class Session
 
     if (isset($_SESSION[$key]))
       unset($_SESSION[$key]);
+  }
+
+  /**
+   * @var string|array $key
+   * 
+   * @return bool
+   */
+  public static function has($key) {
+    $val = self::get($key);
+
+    if (is_array($val) && is_array($key)) {
+      return count($val) == count($key);
+    }
+
+    return $val != null;
+  }
+
+  public static function clear() {
+    session_unset();
   }
 }
