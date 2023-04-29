@@ -40,10 +40,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $result = mysqli_query($conn, $sql);
 
-    if (!$result || mysqli_num_rows($result) != 1) {
-      throw new Exception("");
-    }
-    
     // lấy ra id cuối cùng sau khi insert, đó là id của user
     $id = mysqli_insert_id($conn);
 
