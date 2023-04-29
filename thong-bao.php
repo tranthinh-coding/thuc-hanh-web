@@ -5,10 +5,10 @@
     }
   </script>
 
-  <?php if ($message = Session::clear()->get('message')): ?>
+  <?php if ($message = Session::get('message', [ 'clear' => true ])): ?>
     <div class="notification">
       <div class="notification-content">
-        <?php if ($messageTitle = Session::clear()->get('message-title')): ?>
+        <?php if ($messageTitle = Session::get('message-title', [ 'clear' => true ])): ?>
         <header class="notification-content-header">
           <h4><?php echo $messageTitle ?></h4>
         </header>

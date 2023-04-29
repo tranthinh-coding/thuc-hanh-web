@@ -21,7 +21,13 @@ $result = mysqli_query($conn, $sql);
   <?php require_once './app-header.php'  ?>
 
   <section class="container content-container">
-    <aside></aside>
+    <aside>
+      <ul>
+        <li><a href=""> Trang chủ </a></li>
+        <li><a href=""> Danh sách sản phẩm </a></li>
+        <li><a href=""> Thông tin bla bla </a></li>
+      </ul>
+    </aside>
 
     <main>
       <?php while ($sanpham = mysqli_fetch_array($result)) : ?>
@@ -46,22 +52,22 @@ $result = mysqli_query($conn, $sql);
         <h3>Liên hệ với chúng tôi</h3>
       </div>
       <div class="form-group label-top">
-        <label for="45gy35g" class="form-label"> Họ tên </label>
-        <input id="45gy35g" placeholder="Tên đăng nhập" type="text" class="form-control" name="ho_ten" value="<?php echo Session::get('ho_ten') ?>" />
+        <label for="ho_ten" class="form-label"> Họ tên </label>
+        <input id="ho_ten" placeholder="Tên đăng nhập" type="text" class="form-control" name="ho_ten" value="<?php echo Session::get('ho_ten') ?>" />
       </div>
       <div class="form-group label-top">
-        <label for="sdsdwe" class="form-label"> Số điện thoại </label>
-        <input id="sdsdwe" placeholder="Số điện thoại" type="text" class="form-control" name="so_dien_thoai" value="<?php echo Session::get('so_dien_thoai') ?>" />
-      </div>
-
-      <div class="form-group label-top">
-        <label class="form-label" for="4f456u">Email</label>
-        <input id="4f456u" placeholder="Email" type="text" class="form-control" name="email" value="<?php echo Session::get('email') ?>" />
+        <label for="sdt" class="form-label"> Số điện thoại </label>
+        <input id="sdt" placeholder="Số điện thoại" type="text" class="form-control" name="so_dien_thoai" value="<?php echo Session::get('so_dien_thoai') ?>" />
       </div>
 
       <div class="form-group label-top">
-        <label class="form-label" for="fnsdcm">Lời nhắn</label>
-        <textarea row="40" id="fnsdcm" placeholder="Lời nhắn" name="loi_nhan" class="form-control"><?php echo Session::get('loi_nhan') ?></textarea>
+        <label class="form-label" for="email">Email</label>
+        <input id="email" placeholder="Email" type="text" class="form-control" name="email" value="<?php echo Session::get('email') ?>" />
+      </div>
+
+      <div class="form-group label-top">
+        <label class="form-label" for="loi_nhan">Lời nhắn</label>
+        <textarea row="40" id="loi_nhan" placeholder="Lời nhắn" name="loi_nhan" class="form-control"><?php echo Session::get('loi_nhan') ?></textarea>
       </div>
 
       <div class="form-btns">
@@ -70,49 +76,12 @@ $result = mysqli_query($conn, $sql);
     </form>
   </section>
 
-  <footer class="container">
-    <div class="card">
-      <div class="card-image">
-        <img src="./assets/images/tvthink.jpg" />
-      </div>
-      <h3 class="card-title">Trần Văn Thinh</h3>
-      <p class="card-content">02-12-2001</p>
-      <div class="float-box">
-        <p class="button shadow">20103100350</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-image">
-        <img src="./assets/images/tvthink.jpg" />
-      </div>
-      <h3 class="card-title">Phạm Nhật Tân</h3>
-      <p class="card-content">02-12-2002</p>
-      <div class="float-box">
-        <p class="button shadow">20103100350</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-image">
-        <img src="./assets/images/tvthink.jpg" />
-      </div>
-      <h3 class="card-title">Bùi Thanh Trà</h3>
-      <p class="card-content">02-12-2001</p>
-      <div class="float-box">
-        <p class="button shadow">20103100350</p>
-      </div>
-    </div>
-  </footer>
+  <?php require_once "./app-footer.php" ?>
 
   <style>
     .form {
       position: relative;
       filter: drop-shadow(0 8px 32px rgba(0, 0, 0, 0.021));
-    }
-
-    section {
-      width: 100%;
-      margin-top: 50px;
-      margin-top: 50px;
     }
 
     .content-container {
@@ -126,7 +95,7 @@ $result = mysqli_query($conn, $sql);
 
     aside {
       width: 300px;
-      background: #ddd;
+      /* background: #ddd; */
       height: 600px;
     }
 
