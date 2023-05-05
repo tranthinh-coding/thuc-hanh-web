@@ -32,6 +32,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     redirect('../');
   }
 
+  if (count(explode(" ", $ho_ten)) < 2) {
+    Session::set('message', 'Họ tên phải có hai chữ cái trở lên');
+    redirect('../');
+  }
+
   try {
     // insert vao database
     $sql = "INSERT INTO lien_he (ho_ten, email, so_dien_thoai, loi_nhan)
