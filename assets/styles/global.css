@@ -178,42 +178,6 @@
   margin-right: auto;
 }
 
-header {
-  position: sticky;
-  z-index: 1000;
-  top: 0;
-  width: 100%;
-  height: 60px;
-  filter: drop-shadow(0 8px 32px rgba(0, 0, 0, 0.021));
-  background: #fff;
-  border-radius: 0 0 36px 36px;
-  overflow: hidden;
-}
-
-header nav {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-
-.nav-left {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: fit-content;
-}
-
-.nav-right {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  height: 100%;
-  width: fit-content;
-}
-
 footer {
   width: 100%;
   height: 350px;
@@ -227,10 +191,10 @@ footer {
 .card {
   width: 180px;
   height: 220px;
-  /* background: #eee; */
+  background-color: var(--card-background);
   border-radius: 28px;
   position: relative;
-  box-shadow: 0 8px 32px 0px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 8px 32px 0px rgba(0, 0, 0, 0.028);
   flex-shrink: 0;
 }
 
@@ -266,6 +230,12 @@ footer {
   width: 100%;
   margin-top: 14px;
   margin-bottom: 14px;
+  padding: 0 4px;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
 }
 
 .card-content {
@@ -314,4 +284,12 @@ table {
   border-collapse: collapse;
   color: #212529;
   border: none;
+}
+
+.vs-input {
+  padding: 10px 14px;
+  border-radius: 16px;
+  border: none;
+  outline: none;
+  background-color: rgba(var(--gray-1));
 }
