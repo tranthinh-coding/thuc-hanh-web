@@ -22,7 +22,6 @@ mysqli_query(
   . 'ho_ten VARCHAR(200) DEFAULT NULL, '
   . 'email VARCHAR(200) DEFAULT NULL UNIQUE, '
   . 'so_dien_thoai VARCHAR(200) DEFAULT NULL, '
-  . 'vai_tro VARCHAR(200) DEFAULT NULL, '
   . 'dia_chi VARCHAR(255) DEFAULT NULL, '
   . 'mat_khau VARCHAR(200) DEFAULT NULL'
   . ')'
@@ -40,7 +39,8 @@ mysqli_query(
   . 'so_luong BIGINT DEFAULT NULL, '
   . 'so_luong_da_ban BIGINT DEFAULT NULL, '
   . 'mo_ta LONGTEXT DEFAULT NULL, '
-  . 'hinh_anh LONGTEXT DEFAULT NULL'
+  . 'hinh_anh LONGTEXT DEFAULT NULL, '
+  . 'the_loai VARCHAR(255) DEFAULT NULL'
   . ') '
   . 'COLLATE=\'utf8mb4_unicode_ci\''
 );
@@ -59,5 +59,18 @@ mysqli_query(
   . 'COLLATE=\'utf8mb4_unicode_ci\''
 );
 
-mysqli_close($conn);
-die('Tao database va table xong');
+/** Tao table lien he */
+mysqli_query($conn, 'DROP TABLE IF EXISTS lien_he');
+mysqli_query(
+  $conn,
+  'CREATE TABLE `lien_he` ('
+  . 'id INT PRIMARY KEY AUTO_INCREMENT, '
+  . 'ho_ten VARCHAR(200) DEFAULT NULL, '
+  . 'email VARCHAR(200) DEFAULT NULL, '
+  . 'so_dien_thoai VARCHAR(200) DEFAULT NULL, '
+  . 'loi_nhan LONGTEXT DEFAULT NULL'
+  . ')'
+  . 'COLLATE=\'utf8mb4_unicode_ci\''
+);
+
+echo 'Tao database va table xong <br />';

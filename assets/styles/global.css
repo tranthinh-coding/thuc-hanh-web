@@ -193,15 +193,24 @@ header {
 header nav {
   height: 100%;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-left {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: fit-content;
 }
 
 .nav-right {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 20px;
   height: 100%;
-  margin-left: auto;
   width: fit-content;
 }
 
@@ -281,16 +290,28 @@ footer {
 }
 
 .tag {
-  padding: 6px 20px;
-  border-radius: 8px;
+  padding: 5px 18px;
+  border-radius: 10px;
   max-width: max-content;
   max-height: max-content;
   display: inline-block;
   color: rgb(var(--primary));
-  background-color: rgba(var(--primary), 0.15);
+  background-color: rgba(var(--primary), 0.07);
 }
 section {
   width: 100%;
   margin-top: 50px;
   margin-top: 50px;
+}
+
+table, table tr, table td {
+  border: 1px solid #e7e7e7;
+  padding: 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #212529;
+  border: none;
 }

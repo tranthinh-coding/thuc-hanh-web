@@ -9,10 +9,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $loi_nhan = get('loi_nhan');
 
   Session::set([
-    'ho_ten' => $ho_ten,
-    'so_dien_thoai' => $so_dien_thoai,
-    'email' => $email,
-    'loi_nhan' => $loi_nhan,
+    'lh_ho_ten' => $ho_ten,
+    'lh_so_dien_thoai' => $so_dien_thoai,
+    'lh_email' => $email,
+    'lh_loi_nhan' => $loi_nhan,
   ]);
 
   if (!$ho_ten || !$email || !$so_dien_thoai || !$loi_nhan) {
@@ -26,7 +26,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     redirect('../');
   }
 
-  if (!preg_match("/^[A-Za-z\s]+$/", $ho_ten)) {
+  $validateName = preg_replace('/[^A-Za-z\s]/', '', $ho_ten); // Loại bỏ các dấu trong chuỗi
+  if (!preg_match("/^[A-Za-z\s]+$/", $validateName)) {
     Session::set('message', 'Họ tên chỉ được gồm các chữ cái a-z hoặc A-Z và khoảng trắng.');
     redirect('../');
   }

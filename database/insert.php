@@ -1,8 +1,6 @@
 <?php
 
-require '../constants.php';
-
-$conn = mysqli_connect(HOST, USER_NAME, PASSWORD, DB_NAME);
+require_once './makedb.php';
 
 $san_pham = [
   // 1
@@ -11,6 +9,7 @@ $san_pham = [
     'gia' => 44900000,
     'so_luong' => 1,
     'so_luong_da_ban' => 0,
+    'the_loai' => 'piano',
     'mo_ta' => "<div id=\"tkst\" class=\"description_singer maxheigh300\"><p>[Sound Generator]&nbsp;</p>
 
     <p>-Piano Sound&nbsp;</p>
@@ -339,12 +338,14 @@ $san_pham = [
     </div>",
     'hinh_anh' => 'dan-piano-dien-roland-fp-90x-400x400.jpg',
   ],
+
   // 2
   [
     'ten_san_pham' => 'Jackson JS Series Dinky™ JS12',
     'gia' => 6101000,
     'so_luong' => 15,
     'so_luong_da_ban' => 3,
+    'the_loai' => 'guitar ukulele',
     'mo_ta' => '<table cellspacing="0">
     <tbody>
       <tr>
@@ -467,12 +468,14 @@ $san_pham = [
   </table>',
     'hinh_anh' => 'jackson-js-series-dinkyjs12-wh-270x270.jpg',
   ],
+
   // 3
   [
     'ten_san_pham' => 'Session Studio Select STS924XFP',
     'gia' => 34900000,
     'so_luong' => 4,
     'so_luong_da_ban' => 1,
+    'the_loai' => 'drum, bo trong',
     'mo_ta' => '<table border="1" cellspacing="0" style="width:100%">
     <tbody>
       <tr>
@@ -511,12 +514,14 @@ $san_pham = [
   </table>',
     'hinh_anh' => 'trong-session-studio-select-sts924xspc-1.gif',
   ],
+
   // 4
   [
     'ten_san_pham' => 'Roland RP-30',
     'gia' => 24400000,
     'so_luong' => 4,
     'so_luong_da_ban' => 1,
+    'the_loai' => 'piano,organ',
     'mo_ta' => '<table border="1" cellpadding="0" cellspacing="0" dir="ltr" style="width:100%">
     <tbody>
       <tr>
@@ -703,13 +708,14 @@ $san_pham = [
   </table>',
     'hinh_anh' => 'roland-rp-30-1-400x400.gif',
   ],
-  
+
   // 5
   [
     'ten_san_pham' => 'Samick JS121FD',
     'gia' => 96000000,
     'so_luong' => 2,
     'so_luong_da_ban' => 0,
+    'the_loai' => 'piano',
     'mo_ta' => '<div id="tkst" class="description_singer maxheigh300"><p>Sound board&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Spruce core Soundboard &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Soundboard lõi Gỗ Vân Sam nguyên khối</p>
 
     <p>Frame&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sand-casting Iron plate Frame&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |Khung Sườn Đàn đúc khuôn cát</p>
@@ -724,13 +730,14 @@ $san_pham = [
     </div>',
     'hinh_anh' => 'piano-samick-JS121FD-400x400.jpg',
   ],
-  
+
   // 6
   [
     'ten_san_pham' => 'Blackstar SONNET 120 BLONDE',
     'gia' => 15420000,
     'so_luong' => 2,
     'so_luong_da_ban' => 0,
+    'the_loai' => '',
     'mo_ta' => '<ul>
     <li>120W, 1x8 + tweeter</li>
     <li>Bluetooth audio</li>
@@ -747,7 +754,644 @@ $san_pham = [
     </ul>',
     'hinh_anh' => 'blackstar-sonnet-120-blonde-400x400.jpg',
   ],
-  
+  [
+    'ten_san_pham' => 'Đàn Electone STAGEA ELS02C //THA WITH BENCH',
+    'gia' => 14690000,
+    'so_luong' => 4,
+    'da_ban' => 0,
+    'the_loai' => 'organ',
+    'mo_ta' => '<table class="variations-tableInfo table table-bordered">
+    <tbody>
+                  <tr>
+          <td class="table-label">Mã sản phẩm</td>
+          <td class="table-value">
+            <span class="sku">ELS02</span>
+          </td>
+        </tr>
+                  <tr>
+<td class="table-label">Giá bán</td>
+<td class="table-value">
+  <span class="sku">14,690,000đ</span></td>
+</tr>
+
+
+<tr>
+<td class="table-label">Thương hiệu</td>
+<td class="table-value">Yamaha</td>
+</tr>
+
+      <tr><td class="table-label">Trọng lượng</td><td class="table-value">109,5kg</td></tr><tr><td class="table-label">Kích thước R x C x S</td><td class="table-value">1229 x 1017 x 574 mm</td></tr><tr><td class="table-label">Màu sắc tủ đàn</td><td class="table-value">Silver Metallic</td></tr><tr><td class="table-label">Dòng/Quãng</td><td class="table-value">C – C</td></tr><tr><td class="table-label">Kết nối</td><td class="table-value">Tai nghe, Micro, MIDI, AUX IN, AUX UT, USB </td></tr><tr><td class="table-label">Phụ kiện kèm sản phẩm</td><td class="table-value">Ghế 781 x 305 x 618 mm, 8.8 kg</td></tr>					<tr>
+        <td class="table-label">Tình trạng</td>
+        <td class="table-value">
+          <span class="stock in-stock">Còn hàng</span>						</td>
+      </tr>
+    </tbody>
+  </table>',
+    'hinh_anh' => 'electone-stagea-els-02-500x500.jpg',
+  ],
+  [
+    'ten_san_pham' => 'Đàn Organ Yamaha EZ300 Phím Sáng',
+    'gia' => 17030000,
+    'so_luong' => 4,
+    'da_ban' => 0,
+    'the_loai' => 'organ',
+    'mo_ta' => '<table class="variations-tableInfo table table-bordered">
+    <tbody>
+                  <tr>
+          <td class="table-label">Mã sản phẩm</td>
+          <td class="table-value">
+            <span class="sku">EZ300</span>
+          </td>
+        </tr>
+                  <tr>
+<td class="table-label">Giá bán</td>
+<td class="table-value">
+  <div class="price-box not-sale"><div class="price-contact-txt">Liên hệ</div></div>		</td>
+</tr>
+
+
+<tr>
+<td class="table-label">Thương hiệu</td>
+<td class="table-value">Yamaha</td>
+</tr>
+
+      <tr><td class="table-label">Số phím</td><td class="table-value">61</td></tr><tr><td class="table-label">Màu sắc</td><td class="table-value">màu trắng bạc</td></tr><tr><td class="table-label">Kích thước ( R x C x D)</td><td class="table-value">945 mm x 118 mm x 369 mm</td></tr><tr><td class="table-label">Trọng lượng</td><td class="table-value">4,8 kg (chưa tính pin)</td></tr><tr><td class="table-label">Tiết tấu nhạc đệm sẵn</td><td class="table-value">205</td></tr><tr><td class="table-label">Số lượng bài hát cài đặt sẵn</td><td class="table-value">202</td></tr><tr><td class="table-label">Bộ nhớ trong</td><td class="table-value">Khoảng 1,4 MB</td></tr>					<tr>
+        <td class="table-label">Tình trạng</td>
+        <td class="table-value">
+          <span class="stock in-stock">Còn hàng</span>						</td>
+      </tr>
+    </tbody>
+  </table>',
+    'hinh_anh' => 'dan-organ-yamaha-ez300-phim-sang-1-500x500.jpg'
+  ],
+  [
+    'ten_san_pham' => 'Đàn Guitar Điện Phím Lõm Teisco Cổ Nhạc',
+    'gia' => 4600000,
+    'so_luong' => 4,
+    'da_ban' => 2,
+    'the_loai' => 'guitar',
+    'mo_ta' => '<div class="tab-description entry-content wc-tab bg-white">
+    <h2 style="text-align: justify;">Đặc điểm nổi bật của đàn Guitar Điện Phím Lõm Cổ Nhạc</h2>
+    <p style="text-align: justify;">Đàn Guitar Điện Phím Lõm Teisco Cổ Nhạc được thiết kế với kiểu dáng độc đáo, màu sắc ấn tượng. Được mô phỏng theo mẫu đàn của hãng Ibanez đến từ Nhật Bản. Sản phẩm được sử dụng nhiều trong các dàn nhạc dân tộc, cải lương, đờn ca tài tử,…</p>
+    <ul>
+    <li style="text-align: justify;">Thùng đàn có những đường cắt vát, khoét lõm ở cả hai bên vai đàn.</li>
+    <li style="text-align: justify;">Tổng thể đàn có màu sơn bóng sáng đẹp. Ở viền thân đàn được sơn đậm màu nổi bật hơn.</li>
+    <li style="text-align: justify;">Đàn guitar được làm bằng chất liệu tự nhiên. Đảm bảo được độ bền và tuổi thọ của sản phẩm.</li>
+    <li style="text-align: justify;">Đàn guitar phím lõm Teisco có dây đàn làm bằng kim loại bền chắc. Móc dây đàn làm bằng inox.</li>
+    <li style="text-align: justify;">Mặt đàn, eo và lưng đàn đều sử dụng gỗ tự nhiên cao cấp. Đàn guitar điện phím lõm có nút để điều chỉnh được âm sắc khi chơi.</li>
+    <li style="text-align: justify;">Đàn guitar điện phím lõm Teisco có thể dùng để chơi vọng cổ, cổ nhạc, tân nhạc giao duyên,…</li>
+    </ul>
+    
+          </div>',
+    'hinh_anh' => 'dan-guitar-dien-phim-lom-teisco-co-nhac-mau-xanh-500x500.jpg'
+  ],
+  [
+    'ten_san_pham' => 'Đàn Guitar Acoustic Taylor Academy A12',
+    'gia' => 14180000,
+    'so_luong' => 4,
+    'da_ban' => 0,
+    'the_loai' => 'guitar',
+    'mo_ta' => '<div class="tab-description entry-content wc-tab bg-white">
+				
+
+    <h2>Đàn Guitar Acoustic Taylor Academy A12</h2>
+    <p>Đàn guitar Taylor Academy 12 có dáng Grand concert – là dáng đàn nhỏ nhất của Taylor. Với dáng đàn nhỏ gọn và tiện lợi. Được thiết kế dành cho những người chơi mới, Taylor Academy A12 mang đến hình dáng cơ thể bóng bẩy với thiết kế cổ thương hiệu của chúng tôi và một tay vịn công thái học cho trải nghiệm thực sự thân thiện với người chơi.</p>
+    <p>Chiều dài 24-7 / 8 inch ngắn hơn một chút cũng góp phần mang lại cảm giác mượt mà cho Taylor Academy A12, giúp dễ dàng hơn trong việc băn khoăn dây, giữ hợp âm và uốn cong các nốt khi bạn học cách điều khiển cổ của một cây guitar acoustic.</p>
+    <p>Đàn Guitar Acoustic Taylor Academy A12 không chỉ mang lại cảm giác thoải mái, mang lại âm thanh mạnh mẽ, cân bằng, hòa lẫn giữa sự lấp lánh của cây vân sam rắn chắc với âm trung mạnh mẽ, nhạy bén của lớp sapele nhiều lớp. Với âm thanh linh hoạt và thiết kế dễ tha thứ, Đàn Guitar Acoustic Taylor Academy A12 mang đến cho bạn sức mạnh để theo đuổi cảm hứng âm nhạc của mình.</p>
+    <h2>Non-cutaway</h2>
+    <p>Là một thiết kế không cắt, Taylor Academy 12 mang đến vẻ ngoài đơn giản, đối xứng của một cây guitar acoustic truyền thống.</p>
+    <h2>Thiết kế độc đáo kết hợp với mức giá phải chăng</h2>
+    <p>Chú ý đến các chi tiết là nền tảng chính mà nhà sản xuất nghĩ đến khi seri Academy được thiết kế theo phong cách đặc trưng của Taylor, vừa đảm bảo âm thanh tinh tế mà vẫn sở hữu giá cả phải chăng. Những chuyên gia làm đàn ở Taylor đã cố gắng để nâng cao sự thoải mái và khả năng chơi mà không làm ảnh hưởng đến chất lượng âm thanh.</p>
+    <h3>Mặt sau và hai bên hông được bằng gỗ sapele</h3>
+    <p>Mặt sau và hông đàn được làm bằng các lớp gỗ sapele, tạo cho Academy 12 một hình thức bóng bẩy trong một thân đàn chắc chắn. dáng đàn Grand Concert kết hợp với chất liệu gỗ giúp Academy có được những âm thanh acoustic vô cùng cân bằng với độ sắc nét cực cao.</p>
+    <h2>Thông Số Sản Phẩm Đàn Guitar Acoustic Taylor Academy A12</h2>
+    <ul>
+    <li>Trọng lượng : 11,05 pounds</li>
+    <li>Kích thước vận chuyển: 44.8</li>
+    <li>Độ dài tỷ lệ: 24,87</li>
+    <li>Thân hình: Grand Concert</li>
+    <li>Vật liệu cơ thể: sapele nhiều lớp</li>
+    <li>Chất liệu Soundboard: Sitka vân sam</li>
+    <li>Hình dạng cổ: Cổ Taylor</li>
+    <li>Chất liệu cổ: Gỗ gụ</li>
+    </ul>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+          </div>',
+    'hinh_anh' => 'dan-guitar-acoustic-taylor-academy-a12-new-500x500.jpg'
+  ],
+  [
+    'ten_san_pham' => 'Đàn Ukulele Kaka Soprano KUS-101-PBL',
+    'gia' => 600000,
+    'so_luong' => 4,
+    'da_ban' => 0,
+    'the_loai' => 'ukulele',
+    'mo_ta' => '<div class="tab-description entry-content wc-tab bg-white">
+				
+
+    <h2>Đàn Ukulele Kaka Soprano KUS-101-PBL Màu Sắc</h2>
+    <p>Ukulele là loại đàn độc lập với guitar, nó khác biệt hẳn về cách thức cũng như hình thức của guitar. Ukulele bắt nguồn từ Mỹ và ra đời từ đầu thể kỷ 20 tại Hawai&nbsp;nên Ukulele vẫn có tên thường gọi là đàn Hawai. Ngày nay, Ukulele được giới trẻ ưa chuộng và lan rộng toàn thế giới.</p>
+    <p>Đàn Ukulele màu được trang trí, điêu khắc tỉ mỉ, sinh động, rất nhiều hình ảnh đẹp khiến cho những cây đàn trở nên hoàn mỹ và bắt mắt. Ukulele có thể dùng như một nhạc cụ chơi âm nhạc cho bạn, cũng có thể làm quà tặng sinh nhật hay quà tặng cho bạn bè hoặc người thân của bạn.</p>
+    <p>Ukulele là loại nhạc cụ đa năng được sử dụng và chơi trong nhiều thể loại âm nhạc bao gồm jazz, nhạc đồng quê, blues hay jazz, pop và thậm trí cả nhạc rock. kết nối ukulele với một loại phơ looper, bạn thực sự bất ngờ khi khám phá ra rất nhiều điều thú vị khi kết nối ukulele với phơ đấy.</p>
+    
+    <p>&nbsp;</p>
+    <h2>Thông Tin chi tiết sản phẩm Ukulele Kaka Soprano KUS-101-PBL</h2>
+    <ul>
+    <li>Thương Hiệu:&nbsp;Kaka</li>
+    <li>Kiểu Dáng:&nbsp;Sopranino</li>
+    <li>Kiểu Sơn:&nbsp;Sơn Bóng, nhẵng mịn, dễ dàng lau chùi khi có bụi bám bẩn</li>
+    <li>Mặt Đàn:&nbsp;Gỗ Linden</li>
+    <li>Lưng và Hông:&nbsp;Gỗ Linden</li>
+    <li>Đầu Đàn và Cần:&nbsp;Gỗ mahogany</li>
+    <li>Ngựa Đàn: Ngựa nhựa</li>
+    <li>Dây Đàn: Alice</li>
+    <li>Chất âm: thanh sáng</li>
+    </ul>
+    <p>&nbsp;</p>
+    
+    <h2>Mua đàn Ukulele tốt ở đâu ?</h2>
+    <p>Hơn 20 năm trong lĩnh vực phân phối và kinh doanh nhạc cụ, với nhiều dòng đàn ukulele các loại. Mang đến cho bạn nhiều sự lựa chọn hơn để có thể chọn được cho mình một cây đàn ukulele ưng ý. Đội ngũ nhân viên có kinh nghiệm lâu năm – chắc chắn sẽ nhiệt tình tư vấn cho bạn biết được bạn thật sự thích và phụ hợp với sản phẩm nào.</p>
+    <p>Sản phẩm Ukulele trên tất cả các trụ sở toàn quốc phân phối luôn cam kết chất lượng trên từng mỗi sản phẩm khi đến tay khách hàng, chế đô khuyến mãi ưu đãi kèm theo, bộ máy nhân viên tư vấn online và offline tận tình giải đáp mọi thắc mắt của quý khách.</p>
+    
+    
+    
+          </div>',
+    'hinh_anh' => 'dan-ukulele-kaka-soprano-kus-101-pbl-1-500x500.jpg'
+  ],
+  [
+    'ten_san_pham' => 'Đàn Ukulele Kaka Soprano KUS-121-LS',
+    'gia' => 0,
+    'so_luong' => 4,
+    'da_ban' => 0,
+    'the_loai' => 'ukulele',
+    'mo_ta' => '<div class="tab-description entry-content wc-tab bg-white">
+    <h2>Đàn Ukulele Kaka Soprano KUS-121-LS Màu Sắc</h2>
+    <p>Dòng đàn có xuất xứ từ hawai với thiết kế nhỏ gọn, vừa tay. Nhiều người vẫn thường nhầm lẫn ukulele là một cây đàn guitar nhỏ nhưng không phải vậy. Thiết kế và cấu trúc của ukulele hoàn toàn khác guitar khi chỉ có 4 dây, chất âm ukulele sáng vui tươi. Nhờ vậy sau một thời gian, phong trào chơi ukulele đã và đang lan rộng ra toàn thế giới.</p>
+    <p>Đàn Ukulele Kaka Soprano KUS-121-LS là một trong những dòng ukulele rất thích hợp cho các bạn mới bắt đầu, các bạn sinh viên, các bạn nhỏ bởi vì kiểu dáng đáng yêu, màu sắc đa dạng, họa tiết hoa văn vô cùng phong phú.</p>
+    <p>Sử dụng với những bài nhạc vui. Khi đạt trình độ lên chuyên nghiệp sẽ tự sáng tạo điều chỉnh được phù hợp với ca khúc buồn.giúp giảm stress. trào chơi ukulele đã và đang lan rộng ra toàn thế giới.<br>
+    Kết nối ukulele với một loại phơ looper, bạn thực sự bất ngờ khi khám phá ra rất nhiều điều thú vị khi kết nối ukulele với phơ đấy.</p>
+    
+    <h2>Thông Số kĩ Thuật Đàn Ukulele Kaka Soprano KUS-121-LS</h2>
+    <ul>
+    <li>Thương Hiệu:&nbsp;Kaka</li>
+    <li>Kiểu Dáng:&nbsp;Sopranino</li>
+    <li>Kiểu Sơn:&nbsp;Sơn Bóng, nhẵng mịn, dễ dàng lau chùi khi có bụi bám bẩn</li>
+    <li>Mặt Đàn:&nbsp;Gỗ Linden</li>
+    <li>Lưng và Hông:&nbsp;Gỗ Linden</li>
+    <li>Đầu Đàn và Cần:&nbsp;Gỗ mahogany</li>
+    <li>Ngựa Đàn: Ngựa nhựa</li>
+    <li>Dây Đàn: Alice</li>
+    <li>Chất âm: thanh sáng</li>
+    <li>Màu sắc: trắng chấm bi, hình chibi chàng trai</li>
+    </ul>
+    <h2>Mua Đàn Ukulele Giá Rẻ Ở Đâu ?</h2>
+    <p>Nhạc Cụ Tiến Mạnh là sự lựa chọn cho bạn với 20 năm kinh doanh nhạc cụ và các sản phẩm liên quan, có trụ sở trên toàn quốc, uy tín xem thử các loại đàn ukulele từ giá rẻ đến cao cấp giá cả hợp lí tại Công Ty Tiến Mạnh chúng mình. Bởi, tại công ty Tiến Mạnh music cung cấp các mặt hàng chính hãng, bạn có thể kiểm tra nguyền gốc sản phẩm rõ ràng một cách đơn giản.</p>
+    <p>Khách hàng có thể đến chọn chơi, test đàn thoải mái, các bạn chưa có nhu cầu vẫn có thể đến tham khảo các sản phẩm sẽ có nhân viên phục vụ tận tâm các bạn giải đáp thắc mắc tư vấn bán hàng đầy đủ nha.</p>
+    <p>Ukulele là một trong các sản phẩm bán chạy nhất tại Tiến Mạnh Music , công ty luôn cam kết chất lượng nguồn gốc xuất xứ và chế độ bảo hành tốt nhất cho từng mỗi sản phẩm.</p>
+    <p>Tiến Mạnh gửi lời cảm ơn chân thành và sâu sắc nhất tới quý khách hàng đã quan tâm, đồng hành, gắn bó và tin tưởng sử dụng sản phẩm và dịch vụ của công ty trong suốt thời gian vừa qua</p>
+          </div>',
+    'hinh_anh' => 'dan-ukulele-kaka-soprano-kus-121-ls-500x500.jpg'
+  ],
+  [
+    'ten_san_pham' => 'Đàn Kalimba Yael 17 Phím Gỗ Trúc Y17B (Mbira Thumb Finger Piano 17 Keys)',
+    'gia' => 319000,
+    'so_luong' => 4,
+    'da_ban' => 0,
+    'the_loai' => 'kalimba',
+    'mo_ta' => '<div class="tab-description entry-content wc-tab bg-white">
+    <h2>Đàn Kalimba Yael 17 Phím Gỗ Trúc Y17B</h2>
+    <ul>
+    <li>Kalimba là loại nhạc cụ thú vị dễ chơi, tiện lợi nhỏ gọn, dễ mang đi chắc hẵn nhiều bạn sẽ thích ngay với cái nhìn đầu tiên</li>
+    <li>Đàn Kalimba Yael 17 Phím Gỗ Trúc Y17B có giai điệu mềm mại , nhẹ nhàng âm thanh thư giản âm phát như đàn Hạc , thích hợp với nhiều lứa tuổi đặc biệt là các bạn mới băt đầu chơi nhạc cụ thúc đẩy sự CẢM ÂM – THỤ ÂM.</li>
+    </ul>
+    
+    <p>&nbsp;</p>
+    <ul>
+    <li>&nbsp;ĐẶC BIỆT&nbsp; khi mua đàn Kalimba tại Tiến Mạnh Music Quý Khách sẽ được tăng kèm nhiều món quà hấp dẫn:</li>
+    </ul>
+    <ol>
+    <li>+ Búa lên dây</li>
+    <li>+Túi đựng đàn</li>
+    <li>+Ticker dán phím</li>
+    <li>+Sách học chơi đàn</li>
+    <li>+Dây</li>
+    </ol>
+    <ul>
+    <li>Đàn Kalimba còn gọi là Thumd Piano có thiết kế vừa tay cầm tránh tình trạng mỏi tay đau tay sau thời gian dài chơi, các phím được thiết kế đặc biệt không gây đau tay , cách chơi Kalimba rất đơn giản chỉ cần thao 2 ngón cái hết sức đơn giản, tham khảo cách chơi trên Youtube của các nghệ sĩ nỗi tiếng với các bản cover hàng ngàn lượt xem</li>
+    <li>Kalimba chắc chắn là món quà giải tỏa căn thẳng , thư giản với từng khung bật giai diệu nhẹ nhàng món nhạc cụ thích hợp cho các bạn tìm hiểu về nhạc cụ.</li>
+    <li>Sản phẩm được Bảo hành 1 năm, Bảo trì trọn đời và 1 đổi 1 Mới trong 7 ngày nếu quý khách không hài lòng về sản phẩm, thời gian từ ngày quý khách nhận được đàn – Có thể đổi sang các sản phẩm khác tùy ý . Lưu ý Tiến Mạnh Music không áp dụng bảo hành cho phím đàn.</li>
+    </ul>
+          </div>',
+    'hinh_anh' => 'dan-kalimba-yael-17-phim-go-truc-y17b-500x500.jpg'
+  ],
+  [
+    'ten_san_pham' => 'Đàn Kalimba Walter 17 Phím WK-17BK Đen – Gỗ Mahogany',
+    'gia' => 590000,
+    'so_luong' => 4,
+    'da_ban' => 0,
+    'the_loai' => 'kalimba',
+    'mo_ta' => '<div class="tab-description entry-content wc-tab bg-white">
+				
+
+    <h2>Đàn Kalimba Walter 17 Phím WK-17BK Đen – Gỗ Mahogany</h2>
+    <ul>
+    <li>Kalimba Walte WK-17BK là dòng Kalimba cao cấp,17 phím , chất liệu 100% gỗ Mahogany nguyên tấm cho chất lượng âm thanh trong trẻo, vang, thanh&nbsp; tuyệt vời, mang lại cảm giác rất dễ chịu, thoải mái thư giản cho người nghe, chính vì vậy mà</li>
+    <li>Kalimba được đánh giá là rất tốt cho việc cảm thụ Âm Nhạc của trẻ và các bạn mới chơi nhạc cụ&nbsp; và giúp giảm stress do công việc học tập, có ích cho người mới học chơi Nhạc Cụ. nhỏ gọn tiện lợi dễ mang theo.</li>
+    <li>Thiết kế với tone màu đen nổi bật, màu sắc tươi sáng, mạnh mẽ, thích mắt, các góc cạnh được mài dũ tinh tế cho cảm giác cầm thoải mái mượt mà, họa tiết lazer sắc nét sinh động, kiểu dáng cứng cáp bền bỉ, sang trọng.</li>
+    <li>Đàn Kalimba Walter là một trong những dòng kalimba rất thích hợp cho các bạn mới bắt đầu, các bạn sinh viên, các bạn nhỏ bởi vì kiểu dáng đáng yêu, màu sắc đa dạng, họa tiết hoa văn vô cùng phong phú.</li>
+    </ul>
+    
+    <ul>
+    <li>Tiến Mạnh Music tự hào trở thành nhà phân phối độc quyền các sản phẩm của hãng Walter&nbsp;tại Việt Nam. Cam kết mọi sản phẩm đến tay khách hàng là hàng chính hãng tốt nhất , có giấy tờ chứng nhận độc quyền phân phối từ Công Ty.</li>
+    <li>Đặc Biệt khi mua sản phẩm Kalimba tại tất cả hệ thống&nbsp; Tiến Mạnh Music trên Toàn Quốc quý khách sẽ được tặng kèm nhiều món quà hấp dẫn :</li>
+    </ul>
+    <ol>
+    <li>+ Búa lên dây</li>
+    <li>+ Khăn lau</li>
+    <li>+ Sticker dán phím</li>
+    <li>+ Túi đựng đàn</li>
+    <li>+ Sách dạy chơi đàn</li>
+    <li>+ Dây trang trí</li>
+    </ol>
+    <ul>
+    <li>Bàn phím được sản xuất theo công thức độc quyền của hãng cho ra âm thanh trong, vang, sáng và ít tạp âm. Đàn được thiết kế các phím uốn cong, dạng phím to rất dễ bấm đặc biệt không gây đau tay tránh tình trạng đau nhức khi chơi trong thời gian lâu. Kalimba Walter&nbsp; có thiết kế tinh tế, tạo ra âm thanh chuẩn và vang, bề mặt sơn được xử lý tốt và có kiểu dáng đẹp, thân đàn gọn nhẹ thuận lợi tay cầm người chơi.</li>
+    </ul>
+    
+    <ul>
+    <li>Kalimba là một trong các sản phẩm bán chạy nhất tại Tiến Mạnh Music , công ty luôn cam kết chất lượng nguồn gốc xuất xứ và chế độ bảo hành tốt nhất cho từng mỗi sản phẩm.
+    <p>Khách hàng có thể đến chọn chơi, test đàn thoải mái, các bạn chưa có nhu cầu vẫn có thể đến tham khảo các sản phẩm sẽ có nhân viên phục vụ tận tâm các bạn giải đáp thắc mắc tư vấn bán hàng đầy đủ nha.</p></li>
+    <li>Tất cả sản phẩm Kalimba Tiến Mạnh phân phối đều được tặng kèm sách hướng dẫn học đi kèm, hiện April Yang là nghệ sỹ biểu diễn Kalimba nổi tiếng nhất trên Youtube với hàng ngàn lượt xem , và là nghệ sỹ độc quyền khác. Với nhiều Video chơi Kalimba, hướng dẫn học nhanh chóng , sau một thời gian các bạn có thể tự mình cover lại các bản HIT nhất hiện nay, hãy chọn cho mình Kalimba vừa ý cho mình hay làm món quà ý nghĩa giành tặng người thân bạn nhé !</li>
+    </ul>
+    
+    <p>Sản phẩm được Bảo hành 1 năm, Bảo trì trọn đời và 1 đổi 1 Mới trong 7 ngày nếu quý khách không hài lòng về sản phẩm, thời gian từ ngày quý khách nhận được đàn – Có thể đổi sang các sản phẩm khác tùy ý . Lưu ý Tiến Mạnh Music không áp dụng bảo hành cho phím đàn.</p>
+    <p>&nbsp;</p>
+    
+          </div>',
+    'hinh_anh' => 'dan-kalimba-walter-wk-17bk-17-phim-go-mahogany-500x500.jpg'
+  ],
+  [
+    'ten_san_pham' => 'Đàn Kalimba Ling Ting 17 Phím Gỗ Trúc LT-K17B',
+    'gia' => 850000,
+    'so_luong' => 4,
+    'da_ban' => 0,
+    'the_loai' => 'kalimba',
+    'mo_ta' => '<div class="tab-description entry-content wc-tab bg-white">
+    <h2>Đàn Kalimba Ling Ting 17 Phím Gỗ Trúc LT-K17B</h2>
+    <ul>
+    <li>Đàn Kalimba Ling Ting 17 Phím Gỗ Trúc LT-K17B làm từ chất liệu Gỗ Trúc nguyên tấm, 17 phím, cho chất lượng âm thanh trong trẻo, vang, thanh tuyệt vời, mang lại cảm giác rất dễ chịu, thoải mái thư giản cho người nghe,</li>
+    <li>Chính vì vậy mà âm thanh đàn kalimba ling ting được đánh giá là rất tốt cho việc cảm thụ Âm Nhạc của trẻ và các bạn mới chơi nhạc cụ và giúp giảm stress do công việc học tập có ích cho người mới học chơi Nhạc Cụ.</li>
+    <li>Thiết kế của Kalimba Ling Ting 17 Phím Gỗ Trúc LT-K17B nổi bật với các sọc vân gỗ , màu gỗ sáng, trẻ trung , kiểu dáng nhỏ nhắn, tiện lợi, họa tiết Lazer tỉ mĩ trên từng đường nét.Điểm nhấn đặc biệt là logo Hãng Ling Ting bằng kim loại ánh vàng ở trung tâm.</li>
+    </ul>
+    
+    <ul>
+    <li>Tiến mạnh music tự hào khi trở thành nhà phân phối độc quyền các sản phẩm của hãng Ling Tinh tại Việt Nam. Cam kết mọi sản phẩm đến tay khách hàng là hàng chính hãng tốt nhất , có giấy tờ chứng nhận độc quyền phân phối từ Công Ty.</li>
+    <li>Đặc Biệt khi mua sản phẩm Đàn Kalimba Ling Ting 17 Phím Gỗ Trúc LT-K17B tại tất cả hệ thống Tiến Mạnh Music trên Toàn Quốc quý khách sẽ được tặng kèm nhiều món quà hấp dẫn :<br>
+    + Búa lên dây<br>
+    + Khăn lau<br>
+    + Sticker dán phím<br>
+    + Túi đựng đàn<br>
+    + Sách dạy chơi đàn<br>
+    + Dây trang trí</li>
+    </ul>
+    <ul>
+    <li>Bàn phím được thiết kế và sản xuất theo công nghệ đặc biệt của hãng linh tinh, giúp cho ra âm thanh trong, vang, sáng và ít tạp âm. Đàn được thiết kế các phím uốn cong, dạng phím to rất dễ bấm đặc biệt không gây đau tay tránh tình trạng đau nhức khi chơi trong thời gian lâu.</li>
+    <li>Bề mặt đàn được sơn xử lý tốt kiểu dáng đẹp, thân đàn gọn nhẹ thuận lợi tay cầm người chơi.</li>
+    </ul>
+    
+    <ul>
+    <li>Tất cả sản phẩm Kalimba Tiến Mạnh phân phối đều được tặng kèm sách hướng dẫn học chính hãng đi kèm. đàn kalimba ling ting đã và đang rất nhiều nghệ sĩ kalimba nổi tiếng thế giới, lựa chọn là sản phẩm chính mà họ sử dụng để biểu diễn.</li>
+    <li>Với nhiều Video chơi Kalimba, hướng dẫn học nhanh chóng, sau một thời gian các bạn có thể tự mình cover lại các bản HIT nhất hiện nay, hãy chọn cho mình Kalimba vừa ý cho mình hay làm món quà ý nghĩa giành tặng người thân bạn nhé !</li>
+    </ul>
+    
+    
+    
+    
+          </div>',
+    'hinh_anh' => 'dan-kalimba-ling-ting-17-phim-go-truc-lt-k17b-500x500.jpg'
+  ],
+  [
+    'ten_san_pham' => 'Đàn Kalimba Gecko 17 Phím K17CAS (Gỗ Long Não – Tone C hoặc B tùy chọn)',
+    'gia' => 550000,
+    'so_luong' => 4,
+    'da_ban' => 0,
+    'the_loai' => 'kalimba',
+    'mo_ta' => '<div class="tab-description entry-content wc-tab bg-white">
+			
+    <ul>
+    <li>Kalimba Gecko K17CAS được làm từ gỗ Long Não nguyên tấm, cho chất lượng âm thanh trong trẻo , vang, trong, mang lại cảm giác rất dễ chịu, thoải mái cho người nghe</li>
+    <li>chính điều đó mà Kalimba được đánh giá là rất tốt cho việc Cảm thụ Âm Nhạc các bạn đang tập chơi nhạc cụ&nbsp; và giúp giảm stress ở người lớn, có ích cho người mới học chơi Nhạc Cụ, thích hợp với nhiều lứa tuổi khác nhau.</li>
+    <li>Đàn thiết kế các phím bằng kim loại gắn trên 1 hộp gỗ đóng vai trò như hộp cộng hưởng. Các phím kim loại thiết kế đặc biệt to giúp người chơi tránh tình trạng đau nhức ngón tay khi chơi trong thời gian dài.</li>
+    <li>Bạn có thể chơi các bài nhạc rất dễ dàng bằng cách nhấn lên các phím kim loại, thao tác hết sức đơn giản. Đây là loại nhạc cụ tuyệt vời phù hợp cho bé lẫn người lớn.Thú vị, dễ chơi và nhỏ gọn nên bạn có thể mang theo nó đến mọi nơi.</li>
+    </ul<p>&nbsp;</p>
+    <ul>
+    <li>Đặc biệt khi mua các sản phẩm Kalimba tại hệ thống Tiến Mạnh Music toàn quốc các bạn được tặng rất nhiều món quá hấp dẫn :</li>
+    </ul>
+    <ol>
+    <li>Búa lên dây</li>
+    <li>Túi đựng đàn</li>
+    <li>Khăn lau</li>
+    <li>Sticker dán phím</li>
+    <li>Sách dạy chơi đàn</li>
+    </ol>
+    <ul>
+    <li>Mỗi sản phẩm Gecko Kalimba tặng kèm sách hướng dẫn tự học đàn Kalimba của April Yang đi kèm, hiện April Yang là nghệ sỹ biểu diễn Kalimba nổi tiếng nhất trên Youtube với hàng ngàn lượt xem , và là nghệ sỹ độc quyền của Gecko.</li>
+    <li>Với nhiều Video chơi Kalimba, hướng dẫn học. Kèm theo đó quý khách có thể quét mã QR tặng kem tài liệu để truy cập vào Video học tập thêm về cách chơi và kỹ thuật chơi.</li>
+    </ul>
+    
+    <ul>
+    <li>Các bạn yêu thích món nhạc cụ dễ thương, nhỏ gọn tiện lợi, lun mang theo và dễ học dễ sử dụng Kalimba Gecko 17 Phím K17CAS chính là sự lựa chọn tốt nhất cho bạn, hãy chọn cho mình một Kalimba yêu thích hay làm quà cho bạn bè nhé !</li>
+    </ul>
+          </div>',
+    'hinh_anh' => 'dan-kalimba-gecko-17-phim-k17cas-500x500.jpg'
+  ],
+  [
+    'ten_san_pham' => 'Trống Cajon Nissi CJMDF-578',
+    'gia' => 1000000,
+    'so_luong' => 4,
+    'da_ban' => 0,
+    'the_loai' => 'drum',
+    'mo_ta' => 'Chưa cập nhật được thông số sản phẩm!',
+    'hinh_anh' => 'trong-cajon-nissi-cjmdf-578-1-500x500.jpg'
+  ],
+  [
+    'ten_san_pham' => 'Trống Congas Echoslap CS12-AS(BS) (Made In Thailand)',
+    'gia' => 6500000,
+    'so_luong' => 4,
+    'da_ban' => 0,
+    'the_loai' => 'drum',
+    'mo_ta' => 'Trống Congas Echoslap CS12-AS(BS) (Made In Thailand)',
+    'hinh_anh' => 'trong-congas-echoslap-cs12-asbs-500x500.jpg'
+  ],
+  [
+    'ten_san_pham' => 'Đàn Nguyệt Khảm Trai TM-DNK7',
+    'gia' => 700000,
+    'so_luong' => 4,
+    'da_ban' => 0,
+    'the_loai' => 'nhac-cu-dan-toc',
+    'mo_ta' => 'Đàn Nguyệt Việt Nam TM-DNK7',
+    'hinh_anh' => 'dan-nguyet-kham-trai-tm-dnk7-1-500x500.jpg'
+  ],
+  [
+    'ten_san_pham' => 'Đàn Nguyệt Việt Nam TM-DNV80',
+    'gia' => 1700000,
+    'so_luong' => 4,
+    'da_ban' => 0,
+    'the_loai' => 'nhac-cu-dan-toc',
+    'mo_ta' => 'Đàn Nguyệt Việt Nam TM-DNV80',
+    'hinh_anh' => 'dan-nguyet-viet-nam-tm-dnv80-4-500x500.jpg'
+  ],
+  [
+    'ten_san_pham' => 'Đàn Tỳ Bà Việt Nam TM-DTBT150',
+    'gia' => 1990000,
+    'so_luong' => 4,
+    'da_ban' => 0,
+    'the_loai' => 'nhac-cu-dan-toc',
+    'mo_ta' => 'Đàn Tỳ Bà Việt Nam TM-DTBT150',
+    'hinh_anh' => 'dan-ty-ba-viet-nam-tm-dtbt150-new-500x500.jpg'
+  ],
+  [
+    'ten_san_pham' => 'Đàn Nhị 1 Việt Nam TMN01 (Đàn Cò)',
+    'gia' => 650000,
+    'so_luong' => 4,
+    'da_ban' => 0,
+    'the_loai' => 'nhac-cu-dan-toc',
+    'mo_ta' => 'Đàn Nhị 1 Việt Nam TMN01 (Đàn Cò)',
+    'hinh_anh' => 'dan-nhi-1-viet-nam-tmn01-500x500.jpg'
+  ],
+  [
+    'ten_san_pham' => 'Micro Durm Shure BETA 98H/C',
+    'gia' => 6273000,
+    'so_luong' => 4,
+    'da_ban' => 0,
+    'the_loai' => 'microphone',
+    'mo_ta' => 'Micro Durm Shure BETA 98H/C',
+    'hinh_anh' => 'micro-durm-shure-beta-98h-c-1-500x500.jpg'
+  ],
+  [
+    'ten_san_pham' => 'Micro Cài Áo Rode Lavalier Go',
+    'gia' => 1650000,
+    'so_luong' => 4,
+    'da_ban' => 0,
+    'the_loai' => 'microphone',
+    'mo_ta' => '<div class="tab-description entry-content wc-tab bg-white">
+				
+
+    <h2>Mô tả Sản Phẩm Micro Cài Áo Rode Lavalier Go</h2>
+    <p>Rode Lavalier Go là micro cài áo chuyên nghiệp được thiết kế để sử dụng trong nhiều lĩnh vực studio, nhạc cụ, sân khấu, lồng tiếng, hát, sách nói,…và các dự án quan trọng của bạn.</p>
+    <p>Màng lọc pop của micro Lavalier Go xử lý tạp âm cực sạch và chi tiết. Hệ thống màng lọc Lavalier giúp giảm nhiễu và lọc tiếng ồn (âm thanh cứng ‘b’, ‘t’ và ‘p’) ở hiệu suất tối đa.</p>
+    <p>Với kiểu dáng thiết kế tinh gọn, Lavalier Go sẽ tạo điểm nhấn đặc biệt trong phong cách thời trang của bạn. Rode Lavalier cũng có màu trắng để dễ dàng che khuyết điểm trên quần áo sáng màu.</p>
+    <h3>Đặc Tính Nổi Bật Của Micro Cài Áo Rode Lavalier Go</h3>
+    <ul>
+    <li>Micro cài áo Rode Lavalier nhỏ gọn thời trang</li>
+    <li>Kẹp giữ cố định Kevlar® vô cùng tiện lợi</li>
+    <li>Hiệu suất và công năng âm thanh vượt trội</li>
+    <li>Hệ thống truyền dẫn tín hiệu cực kỳ tốt</li>
+    <li>Hệ thống kĩ thuật và bộ lọc âm của Lavalier rất linh hoạt</li>
+    <li>Rode Lavalier có khả năng loại bỏ tạp âm vô cùng chính xác và tinh tế</li>
+    <li>Ứng dụng trên nhiều lĩnh vực ( studio, nhạc cụ, sân khấu, lồng tiếng, hát, sách nói,…)</li>
+    </ul>
+    
+    <h3>Trọn Bộ Sản Phẩm Micro Cài Áo Rode Lavalier Go Bao Gồm</h3>
+    <ul>
+    <li>Micro cài áo&nbsp;Rode Lavalier</li>
+    <li>Kẹp giữ micro cố định Kevlar®</li>
+    <li>Màng lọc pop hiệu quả</li>
+    <li>Túi đựng sản phẩm</li>
+    </ul>
+    
+    <h3>Thông Số Kĩ Thuật Của Micro Cài Áo Rode Lavalier Go</h3>
+    <ul>
+    <li>Thuộc tính: Cài áo</li>
+    <li>Kích thước: 5.08 x 23.88mm</li>
+    <li>Trọng lượng: 16g</li>
+    <li>Đáp ứng tần số: 20 Hz- 20 kHz</li>
+    <li>SPL tối đa: 110 dB</li>
+    <li>Yêu cầu về nguồn điện: 2.7V</li>
+    </ul>
+    
+    
+          </div>',
+    'hinh_anh' => 'micro-rode-lavalier-go-500x500.jpg'
+  ],
+  [
+    'ten_san_pham' => 'Micro Không Dây Rode Wireless Go 2',
+    'gia' => 6990000,
+    'so_luong' => 4,
+    'da_ban' => 0,
+    'the_loai' => 'microphone',
+    'mo_ta' => '<div class="tab-description entry-content wc-tab bg-white">
+				
+
+    <h2>Micro Không Dây Rode Wireless Go 2</h2>
+    <p>Khác với phiên bản Wireless Go đầu tiên cho ra mắt. Micro Rode Wireless Go 2 là phiên bản nâng cấp giúp cho người dùng có những trải nghiệm tốt hơn, khác với đời Wireless Go trước sử dụng một kênh đơn, Wireless Go 2 được Rode nâng cấp lên thành hai kênh , giúp micro có thể xử lý hai máy phát cùng một lúc và còn nhìu tính năng nổi bật khác.</p>
+    <h2>Tính năng nâng cấp</h2>
+    <ul>
+    <li>Wireless Go 2 được trang bị công nghệ Series IV 2.4GHz mới nhất, kết hợp mã hóa 128-bit để bảo mật tốt hơn, vì thế giúp cho Wireless Go 2 cho phép mở rộng phạm vi hoạt động lên khoảng 200m, xa hơn nhiều so với phiên bản đầu tiên.</li>
+    <li>Vốn bị than phiền bộ lọc gió rất dễ rơi trên thế hệ đầu tiên, Wireless GO II cũng cải tiến thiết kế giúp gắn bộ lọc gió chắc chắn hơn cho microphone tích hợp. Ngoài microphone với kiểu polar pattern dạng định hướng tích hợp, Wireless GO II vẫn hỗ trợ cổng 3.5mm TRS để kết nối những microphone gắn rời.</li>
+    <li>Rode Wireless Go 2 được tích hợp khả năng lưu trữ file âm thanh giống như chức năng của máy ghi âm, có bộ nhớ lên đến 4GB. Người dùng có thể trích xuất những file bằng phần mềm RODE Central app trên máy tính thông qua cổng USB-C.</li>
+    <li>Việc có hai bộ thu âm, người dùng có thể thông qua phần mềm RODE Central app để theo dõi chất lượng sóng và cường độ âm thanh và tình trạng pin của 2 kênh</li>
+    </ul>
+    <h2>Thông số sản phẩm</h2>
+    <ul>
+    <li><span class="jss958">Màu Sắc: </span>Đen</li>
+    <li><span class="jss958">Kích Thước: </span>RX: 44 x 45.3 x 18.3 mm | TX: 44 x 45.3 x 18.3 mm</li>
+    <li><span class="jss958">Cân Nặng: </span>RX: 32g | TX: 30g</li>
+    <li><span class="jss958">Trường Âm Thanh: </span>Mono</li>
+    <li><span class="jss958">Dải Tần Số: </span>50 Hz – 20 kHz</li>
+    <li>SPL Tối Đa: 100 dB SPL</li>
+    <li>Đầu Ra: 3.5mm TRS</li>
+    <li>Nguồn: Pin Battery or Bus Power (USB)</li>
+    <li>Số Pin: 1 x Built-In Rechargeable (Included)</li>
+    <li>Loại Pin: Lithiumion</li>
+    <li>Số Giờ Hoạt Động: 7 giờ</li>
+    </ul>
+    <p>&nbsp;</p>
+          </div>',
+    'hinh_anh' => 'micro-khong-day-rode-wireless-go-22222-500x400.jpg'
+  ],
+  [
+    'ten_san_pham' => 'Tai Nghe Kiểm Âm AKG K92',
+    'gia' => 1850000,
+    'so_luong' => 4,
+    'da_ban' => 0,
+    'the_loai' => 'am-thanh',
+    'mo_ta' => '<div class="tab-description entry-content wc-tab bg-white">
+				
+
+    <h2>Đặc điểm nổi bật của Tai Nghe Kiểm Âm AKG K92</h2>
+    <ul>
+    <li>Tai nghe kiểm âm AKG K92 đa năng cực hữu dụng cho các DJ, producer, creator, streamer, podcaster, broadcaster, vloger, singer</li>
+    <li>Trình điều khiển 40mm mang lại độ nhạy 113 dB (dB SPL / V @ 1 kHz)</li>
+    <li>Tận hưởng những sắc thái âm thanh tinh tế nhất suốt phổ tần số 16 – 22kHz</li>
+    <li>Bền bỉ, năng động, hiểu suất ổn định với mức giá cực tốt so với các tai nghe trong cùng phân khúc</li>
+    <li>Thiết kế closed-back AKG K92 với dạng over-ear tạo khả năng cách âm hoàn hảo</li>
+    <li>Chất liệu mềm mại ở Pad tai và ear-cup giúp đôi tai bạn thoải mái hơn khi đeo liên tục trong nhiều giờ liền</li>
+    <li>Tận hưởng âm thanh hifi mạnh mẽ sống động với công suất max lên đến 200 mW</li>
+    <li>Phiên bản tai nghe monitor AKG K92 200g có phần housing bền bỉ tỉ mỉ trong từng đường nét</li>
+    <li>Kết nối XLR 3.5mm linh hoạt giúp quá trình truyền tải âm thanh luôn giữ được tín hiệu ổn định</li>
+    <li>Ấn tượng với vẻ ngoài bắt mắt bởi sắc đen mạnh mẽ mix cùng sắc vàng gold độc đáo</li>
+    <li>Trở kháng 32 Ω AKG K92 làm tăng độ nét trên guitar bass, trống và các nhạc cụ acoustic</li>
+    </ul>
+          </div>',
+    'hinh_anh' => 'tai-nghe-kiem-am-akg-k92-6-500x500.jpg'
+  ],
+  [
+    'ten_san_pham' => 'Loa Siêu Trầm Yamaha VXS3SB',
+    'gia' => 5990000,
+    'so_luong' => 4,
+    'da_ban' => 0,
+    'the_loai' => 'am-thanh',
+    'mo_ta' => '<div class="tab-description entry-content wc-tab bg-white">
+				
+
+    <h2>Loa Siêu Trầm Yamaha VXS3SB</h2>
+    <p>Loa Siêu Trầm Yamaha VXS3SB với chất lượng âm thanh tuyệt vời để tái tạo âm nhạc sống động hơn, chân thực hơn. Mặc dù không lớn hơn một loa gắn trên bề mặt nhỏ gọn, Các loa siêu trầm mô hình VXS sê-ri VXS là kết hợp lý tưởng cho các loa dòng VXS và VXC, mở rộng mượt mà dải tần số thấp với chất lượng âm thanh tuyệt vời để tái tạo âm nhạc lớn hơn, chân thực hơn. Mặc dù không lớn hơn loa gắn trên bề mặt nhỏ gọn, Yamaha VXS3SB mang đến khả năng gia cố âm thấp chắc chắn, tự nhiên.</p>
+    
+    <h2>Tính Năng Nổi Bật Loa Siêu Trầm Yamaha VXS3SB</h2>
+    <ul>
+    <li>Loa siêu trầm đa năng tương thích với các hệ thống trở kháng thấp và cao</li>
+    <li>Âm thanh và kích thước phù hợp lý tưởng với VXS1ML</li>
+    <li>Công nghệ SR-Bass ™ mang lại âm trầm chắc chắn trong một đơn vị nhỏ gọn</li>
+    <li>Kết nối vệ tinh để dễ dàng thiết lập</li>
+    <li>Cung cấp phần cứng gắn tường / trần chuyên dụng</li>
+    <li>Mô hình màu đen và trắng có sẵn</li>
+    <li>Vỏ và lưới tản nhiệt</li>
+    </ul>
+    
+    <h3>Tùy chọn lắp đặt</h3>
+    <p>Ngoài phần cứng gắn tường được cung cấp, một loạt các phần cứng tùy chọn cho phép các mô hình VXS sê-ri VXS được gắn theo một số cách. VXS10S có thể được đặt trên sàn hoặc gắn trên tường hoặc trần, trong khi Yamaha VXS3SB còn cho phép gắn trần phẳng.</p>
+    <h3>Công nghệ Yamaha SR-Bass ™</h3>
+    <p>Công nghệ Yamaha SR-Bass ™ nguyên bản được sử dụng trong Yamaha VXS3SB treo một màng loa bốn phía ở một bên, sử dụng cộng hưởng của màng loa để tăng cường đầu ra tần số thấp của hệ thống. Không có giới hạn về hình dạng và vật liệu được sử dụng cho màng loa, làm cho công nghệ SR-Bass ™ có thể áp dụng cho một loạt các thiết kế loa.</p>
+    <h2>Thông Số Kĩ Thuật Loa Siêu Trầm Yamaha VXS3SB</h2>
+    <ul>
+    <li>Nhãn hiệu: Yamaha</li>
+    <li>Trở kháng thấp: 8 ohm</li>
+    <li>Trở kháng cao 100V: 15W, 7.5W, 3.8W</li>
+    <li>Trở kháng cao 70V: 15W, 7.5W, 3.8W, 1.9W</li>
+    <li>SPL tối đa cao nhất: 98dB</li>
+    <li>Dải tần số: 65Hz-180Hz</li>
+    <li>Cân nặng: 3kg</li>
+    <li>Chiều cao: 16cm</li>
+    <li>Chiều rộng: 32cm</li>
+    <li>Chiều sâu: 12cm</li>
+    <li>Nhà sản xuất Phần số: VXS3SB</li>
+    <li>Nước xuất xứ: Nhật Bản</li>
+    </ul>
+    
+          </div>',
+    'hinh_anh' => 'loa-sieu-tram-yamaha-vxs3sb-500x500.jpg'
+  ],
+  [
+    'ten_san_pham' => 'Loa Loudspeakers Yamaha CBR10',
+    'gia' => 8800000,
+    'so_luong' => 4,
+    'da_ban' => 0,
+    'the_loai' => 'am-thanh',
+    'mo_ta' => '<div class="tab-description entry-content wc-tab bg-white">
+				
+
+    <h2>Loa Loudspeakers Yamaha CBR10</h2>
+    <p>Loa Loudspeakers Yamaha CBR10 được phát triển bằng cách áp dụng kiến &ZeroWidthSpace;&ZeroWidthSpace;thức sâu rộng về thiết kế loa và công nghệ âm thanh mà Yamaha đã tích lũy trong lịch sử lâu dài về việc tạo ra các loại loa. Kết hợp một quy trình lựa chọn vật liệu tỉ mỉ, tùy chỉnh kỹ lưỡng âm thanh các thành phần, và một sự đổi mới, mới mẻ đối với thiết kế loa, trọng tâm chính của nhóm kỹ thuật của chúng tôi là cung cấp âm thanh công suất cao, độ phân giải cao trong một thiết kế linh hoạt và có thể điều khiển được ở nhà trước, giám sát sàn hoặc dàn âm thanh cấu hình.</p>
+    <p>Bộ chuyển đổi được thiết kế tùy chỉnh và độ phân tán rộng liên tục Sừng cho chức năng bảo vệ âm thanh độ phân giải cao mạnh mẽ và đơn vị LF có độ phản hồi cao cho hiệu suất đáng tin cậy ở bất kỳ mức đầu ra nào,Thiết kế bao vây di động cao- Kết nối đơn giản – Tính linh hoạt cho nhiều loại ứng dụng.</p>
+    
+    <h2>Tính Năng Nổi Bật Loa Loudspeakers Yamaha CBR10</h2>
+    <ul>
+    <li>Đầu dò được thiết kế tùy chỉnh và phân tán trực tiếp liên tục rộng cho âm thanh độ nét cao mạnh mẽ</li>
+    <li>Chức năng bảo vệ HF và Đơn vị LF có độ phản hồi cao cho hiệu suất đáng tin cậy ở mọi mức đầu ra</li>
+    <li>Thiết kế bao vây chắc chắn, di động cao</li>
+    <li>Kết nối đơn giản</li>
+    <li>Tính linh hoạt cho một loạt các ứng dụng</li>
+    <li>Loa CBR10 tối ưu hóa 1 góc 50°</li>
+    </ul>
+    
+    <h3>Đầu dò được thiết kế tùy chỉnh và phân tán trực tiếp liên tục rộng cho âm thanh độ nét cao mạnh mẽ</h3>
+    <p>Loa CBR Series được trang bị đầu dò được lựa chọn và tùy chỉnh cẩn thận, có loa trầm có độ phản hồi cao và trình điều khiển nén 2,5 chính xác (CBR15) hoặc trình điều khiển nén 2 ((CBR10 và CBR12), đảm bảo âm thanh độ phân giải cao nhất quán với độ méo tối thiểu ngay cả ở mức cao mức sản lượng.</p>
+    <p>Ngoài ra, còi điều hướng liên tục phân tán rộng được thiết kế mới giúp giảm thiểu sự suy giảm mô hình bức xạ theo các hướng xiên mà các sừng thông thường dễ mắc phải hơn, cho phép âm thanh mở rộng theo mô hình hình chữ nhật hơn, phân tán đều âm thanh tần số rộng đến các cạnh ngoài cùng của vùng phủ sóng.</p>
+    
+    <h3>Bảo vệ HF và Đơn vị LF</h3>
+    <p>Loa CBR Series sử dụng chức năng bảo vệ giới hạn đầu vào quá mức cho thiết bị HF. Mạch bảo vệ có giá trị này giúp bạn vận hành loa không lo lắng khi bạn cần chúng nhất. Kết hợp với một đơn vị LF có độ phản hồi cao, loa CBR Series đáng tin cậy cung cấp âm thanh rõ ràng, chính xác ở bất kỳ mức đầu ra nào.</p>
+    <h3>Thiết kế xung quanh chắc chắn, di động cao</h3>
+    <p>Loa CBR Series có tủ nhựa rất nhỏ gọn, bền và nhẹ được trang bị tay cầm được thiết kế mới, tiện dụng, giúp giảm thiểu tối đa việc vận chuyển và thiết lập hệ thống. Ngoài ra, tất cả các mẫu CBR đều có lưới tản nhiệt phía trước bằng thép kiểu dáng đẹp, kết hợp hoàn hảo với tính thẩm mỹ lắp đặt trong khi bảo vệ các thành phần loa bên trong quan trọng khỏi các mối nguy môi trường.</p>
+    
+    <h3>Kết nối đơn giản</h3>
+    <p>Loa CBR Series được trang bị một giắc cắm speakON và một giắc cắm điện thoại 1/4 “cho phép kết nối nhanh chóng và dễ dàng trong cả môi trường cá nhân và chuyên nghiệp.</p>
+    <h3>Thiết kế&nbsp; thông minh</h3>
+    <p>Loa CBR Series có góc nêm 50 ° được tối ưu hóa để giám sát sàn. Ngoài ra, hình dạng đối xứng của CBR12 và CBR15 cho phép cấu hình dễ dàng của hệ thống giám sát sàn chế độ gương cho điểm ngọt lớn hơn và rõ hơn.</p>
+    <h3>Vỏ loa chức năng</h3>
+    <p>Vỏ loa chức năng được thiết kế mới của Yamaha bảo vệ loa của bạn khỏi các điều kiện thời tiết không thuận lợi trong các buổi biểu diễn ngoài trời, kho chứa bụi bẩn và bẩn, hoặc sự khắc nghiệt của việc vận chuyển thiết bị trên đường.</p>
+    
+    <h3>Thông Số Sản Phẩm Loa Loudspeakers Yamaha CBR10</h3>
+    <ul>
+    <li>Công suất (Chương trình): 350W</li>
+    <li>Công suất cực đại: 700W</li>
+    <li>Trở kháng: 8 ohms</li>
+    <li>Đầu vào: 1 x 1/4 “, 1 x speakON</li>
+    <li>Dải tần số: 50Hz-20khz (-10 dB)</li>
+    <li>Tần số chéo: 2,8kHz</li>
+    <li>SPL cực đại: 123dB</li>
+    <li>Góc phủ sóng ngang: 90 độ</li>
+    <li>Góc phủ sóng dọc: 60 độ</li>
+    <li>Chất liệu bao vây: Nhựa</li>
+    <li>Tùy chọn lắp: Cực gắn với ổ cắm 1,37 “, 3 điểm bay M8</li>
+    <li>Chiều cao:19,4 “</li>
+    <li>Chiều rộng:12,1 “</li>
+    <li>Độ sâu:11,4 “</li>
+    <li>Trọng lượng:20,7 lbs.</li>
+    <li>Nhà sản xuất Mã sản phẩm: CBR10</li>
+    </ul>
+    
+          </div>',
+    'hinh_anh' => 'loa-yamaha-cbr10-500x500.jpg'
+  ],
+  [
+    'ten_san_pham' => 'Loa Liền Công Suất JBL EON 610',
+    'gia' => 12900000,
+    'so_luong' => 4,
+    'da_ban' => 0,
+    'the_loai' => 'am-thanh',
+    'mo_ta' => 'Loa Liền Công Suất JBL EON 610',
+    'hinh_anh' => 'loa-lien-cong-suat-jbl-eon-610-1-500x400.jpg'
+  ]
 ];
 
 foreach ($san_pham as $sp) {
@@ -765,8 +1409,10 @@ foreach ($san_pham as $sp) {
 
   $values = implode(",", $values);
 
-  $sql = "INSERT INTO san_pham (ten_san_pham, gia, so_luong, so_luong_da_ban, mo_ta, hinh_anh) 
+  $sql = "INSERT INTO san_pham (ten_san_pham, gia, so_luong, so_luong_da_ban, the_loai, mo_ta, hinh_anh) 
     VALUES ($values)";
 
   mysqli_query($conn, $sql);
 }
+
+echo 'Insert dữ liệu OK.';

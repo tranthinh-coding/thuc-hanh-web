@@ -27,8 +27,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     Session::set('message', 'Email không đúng định dạng.');
     redirect('../dang-ky.php');
   }
-
-  if (!preg_match("/^[A-Za-z\s]+$/", $ho_ten)) {
+  
+  $validateName = preg_replace('/[^A-Za-z\s]/', '', $ho_ten); // Loại bỏ các dấu trong chuỗi
+  if (!preg_match("/^[A-Za-z\s]+$/", $validateName)) {
     Session::set('message', 'Họ tên chỉ được gồm các chữ cái a-z hoặc A-Z và khoảng trắng.');
     redirect('../dang-ky.php');
   }
