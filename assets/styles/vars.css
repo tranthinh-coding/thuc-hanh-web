@@ -19,5 +19,10 @@
   --theme-layout: #fff;
   --theme-bg2: #eef2f5;
 
+  --card-background: var(--theme-layout);
+  --sidebar-background: var(--theme-layout);
+
   --shadow-opacity: .04;
+  
+  --header-nav-height: 68px;
 }
