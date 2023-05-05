@@ -2,10 +2,30 @@
 
 <?php
 $query = get('query');
+$search = get('search');
+if (!$search) {
+  $search = Session::get('search');
+}
+
+Session::set('search', $search);
 Session::set('query', $query);
 
-$sql = "SELECT * FROM san_pham WHERE the_loai LIKE '%$query%'";
+$sql = "SELECT * FROM san_pham ";
 
+if ($query) {
+  $sql .= " WHERE the_loai LIKE '%$query%'";
+}
+
+if ($search) {
+  $and = " AND ";
+
+  if (!$query) {
+    $and = " WHERE ";
+  }
+
+  $sql .= $and . " ten_san_pham LIKE '%$search%'";
+}
+// die($sql); 
 $result = mysqli_query($conn, $sql);
 ?>
 
@@ -23,57 +43,59 @@ $result = mysqli_query($conn, $sql);
 
   <?php require_once './app-header.php'  ?>
 
+  <?php require_once "./app-slider.php" ?>
+
   <section class="container content-container">
     <aside class="sidebar">
       <h2 class="sidebar-header">Danh mục sản phẩm</h2>
       <ul class="sidebar-list">
         <li class="sidebar-item">
-          <a class="sidebar-link" href="?query="> Tất cả </a>
+          <a class="sidebar-link" href="?query=&?search=<?php echo Session::get('search') ?>"> Tất cả </a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" href="?query=piano">
+          <a class="sidebar-link" href="?query=piano&?search=<?php echo Session::get('search') ?>">
             <img src="./assets/images/icons/piano.svg" alt="" /> Đàn piano
           </a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" href="?query=organ">
+          <a class="sidebar-link" href="?query=organ&?search=<?php echo Session::get('search') ?>">
             <img src="./assets/images/icons/organ.svg" alt="" /> Đàn organ
           </a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" href="?query=guitar">
+          <a class="sidebar-link" href="?query=guitar&?search=<?php echo Session::get('search') ?>">
             <img src="./assets/images/icons/guitar.svg" alt="" /> Đàn guitar
           </a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" href="?query=ukulele">
+          <a class="sidebar-link" href="?query=ukulele&?search=<?php echo Session::get('search') ?>">
             <img src="./assets/images/icons/ukulele.svg" alt="" /> Đàn Ukulele
           </a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" href="?query=kalimba">
+          <a class="sidebar-link" href="?query=kalimba&?search=<?php echo Session::get('search') ?>">
             <img src="./assets/images/icons/kalimba.svg" alt="" /> Đàn Kalimba
           </a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" href="?query=drum">
+          <a class="sidebar-link" href="?query=drum&?search=<?php echo Session::get('search') ?>">
             <img src="./assets/images/icons/drum.svg" alt="" /> Bộ trống -
             Drum
           </a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" href="?query=am-thanh">
+          <a class="sidebar-link" href="?query=am-thanh&?search=<?php echo Session::get('search') ?>">
             <img src="./assets/images/icons/speaker.svg" alt="" /> Âm thanh
           </a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" href="?query=micro">
+          <a class="sidebar-link" href="?query=micro&?search=<?php echo Session::get('search') ?>">
             <img src="./assets/images/icons/microphone.svg" alt="" />
             Micro Nhạc cụ - chuyên nghiệp
           </a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" href="?query=nhac-cu-dan-toc">
+          <a class="sidebar-link" href="?query=nhac-cu-dan-toc&?search=<?php echo Session::get('search') ?>">
             <img src="./assets/images/icons/harp.svg" alt="" />
             Nhạc vụ dân tộc
           </a>
@@ -81,40 +103,48 @@ $result = mysqli_query($conn, $sql);
       </ul>
     </aside>
 
-    <main id="san-pham">
-      <?php if (mysqli_num_rows($result) == null) : ?>
-        <style>
-          .not-found-items {
-            width: 400px;
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-          }
-        </style>
-        <div class="not-found-items">
-          Danh mục này chưa có sản phẩm
+    <main>
+      <form action="./handler/search.inc.php" class="form" style="margin-bottom: 18px">
+        <div style="display: flex; gap: 10px">
+          <input name="search" class="form-control" value="<?php echo Session::get('search') ?>" placeholder="Tìm kiếm sản phẩm" />
+          <button class="button">Tìm kiếm</button>
         </div>
-      <?php endif ?>
-      <?php while ($sanpham = mysqli_fetch_array($result)) : ?>
-        <div class="card">
-          <div class="card-image">
+      </form>
+      <div id="san-pham">
+        <?php if (mysqli_num_rows($result) == null) : ?>
+          <style>
+            .not-found-items {
+              width: 400px;
+              height: 200px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 22px;
+            }
+          </style>
+          <div class="not-found-items">
+            Danh mục này chưa có sản phẩm
+          </div>
+        <?php endif ?>
+        <?php while ($sanpham = mysqli_fetch_array($result)) : ?>
+          <div class="card">
+            <div class="card-image">
+              <a href="./chi-tiet-san-pham.php?id=<?php echo $sanpham['id'] ?>">
+                <img src="./assets/images/san_pham/<?php echo $sanpham['hinh_anh'] ?>" />
+              </a>
+            </div>
             <a href="./chi-tiet-san-pham.php?id=<?php echo $sanpham['id'] ?>">
-              <img src="./assets/images/san_pham/<?php echo $sanpham['hinh_anh'] ?>" />
+              <h3 class="card-title"><?php echo $sanpham['ten_san_pham'] ?></h3>
             </a>
+            <div class="float-box">
+              <p class="button shadow" style="white-space: nowrap">
+                <?php echo formatCurrency($sanpham['gia']) ?>
+                đ
+              </p>
+            </div>
           </div>
-          <a href="./chi-tiet-san-pham.php?id=<?php echo $sanpham['id'] ?>">
-            <h3 class="card-title"><?php echo $sanpham['ten_san_pham'] ?></h3>
-          </a>
-          <div class="float-box">
-            <p class="button shadow" style="white-space: nowrap">
-              <?php echo formatCurrency($sanpham['gia']) ?>
-              đ
-            </p>
-          </div>
-        </div>
-      <?php endwhile ?>
+        <?php endwhile ?>
+      </div>
     </main>
   </section>
 
@@ -158,6 +188,7 @@ $result = mysqli_query($conn, $sql);
 
     .content-container {
       display: flex;
+      gap: 20px;
     }
 
     section.form-section {
@@ -165,15 +196,10 @@ $result = mysqli_query($conn, $sql);
       justify-content: center;
     }
 
-    aside {
-      width: 300px;
-      /* background: #ddd; */
-      height: 600px;
-    }
-
     .sidebar {
-      width: 400px;
+      min-width: 240px;
       padding: 10px 0;
+      height: 500px;
     }
 
     .sidebar-header {
@@ -181,10 +207,19 @@ $result = mysqli_query($conn, $sql);
       margin: 10px 0;
     }
 
+    .sidebar-list {
+      background-color: var(--sidebar-background);
+      padding: 14px;
+      margin-left: -20px;
+      border-radius: 10px;
+      filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.028));
+    }
+
     .sidebar-item {
       list-style: none;
       margin: 4px 0;
       padding: 4px 10px;
+      position: relative;
     }
 
     .sidebar-link {
@@ -207,6 +242,10 @@ $result = mysqli_query($conn, $sql);
     }
 
     main {
+      width: 100%;
+    }
+
+    #san-pham {
       padding: 0 14px;
       display: flex;
       gap: 40px 20px;
