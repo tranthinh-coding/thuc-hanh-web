@@ -59,18 +59,4 @@ mysqli_query(
   . 'COLLATE=\'utf8mb4_unicode_ci\''
 );
 
-/** Tao table lien he */
-mysqli_query($conn, 'DROP TABLE IF EXISTS lien_he');
-mysqli_query(
-  $conn,
-  'CREATE TABLE `lien_he` ('
-  . 'id INT PRIMARY KEY AUTO_INCREMENT, '
-  . 'ho_ten VARCHAR(200) DEFAULT NULL, '
-  . 'email VARCHAR(200) DEFAULT NULL, '
-  . 'so_dien_thoai VARCHAR(200) DEFAULT NULL, '
-  . 'loi_nhan LONGTEXT DEFAULT NULL'
-  . ')'
-  . 'COLLATE=\'utf8mb4_unicode_ci\''
-);
-
 echo 'Tao database va table xong <br />';
