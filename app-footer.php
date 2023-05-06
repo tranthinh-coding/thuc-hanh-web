@@ -14,9 +14,9 @@
       <img src="./assets/images/tvthink.jpg" />
     </div>
     <h3 class="card-title">Phạm Nhật Tân</h3>
-    <p class="card-content">02-12-2002</p>
+    <p class="card-content">23-01-2002</p>
     <div class="float-box">
-      <p class="button shadow">20103100350</p>
+      <p class="button shadow">20103100358</p>
     </div>
   </div>
   <div class="card">
@@ -24,9 +24,9 @@
       <img src="./assets/images/tvthink.jpg" />
     </div>
     <h3 class="card-title">Bùi Thanh Trà</h3>
-    <p class="card-content">02-12-2001</p>
+    <p class="card-content">25-06-2002</p>
     <div class="float-box">
-      <p class="button shadow">20103100350</p>
+      <p class="button shadow">20103100375</p>
     </div>
   </div>
 </footer>
