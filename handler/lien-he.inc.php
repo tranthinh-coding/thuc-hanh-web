@@ -3,7 +3,7 @@
 require_once "../autoload.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $ho_ten = get('ho_ten');
+  $ho_ten = reduceName(get('ho_ten'));
   $so_dien_thoai = get('so_dien_thoai');
   $email = get('email');
   $loi_nhan = get('loi_nhan');
@@ -20,21 +20,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     redirect('../');
   }
 
-  // check $email hop le
   if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     Session::set('message', 'Email không đúng định dạng.');
-    redirect('../');
+    redirect('../dang-ky.php');
   }
 
-  $validateName = preg_replace('/[^A-Za-z\s]/', '', $ho_ten); // Loại bỏ các dấu trong chuỗi
-  if (!preg_match("/^[A-Za-z\s]+$/", $validateName)) {
+  if (!preg_match("/^[A-Za-z\sĂăÂâĐđÊêÔôƠơƯư]+$/u", $ho_ten)) {
     Session::set('message', 'Họ tên chỉ được gồm các chữ cái a-z hoặc A-Z và khoảng trắng.');
-    redirect('../');
+    redirect('../dang-ky.php');
   }
 
-  if (count(explode(" ", $ho_ten)) < 2) {
-    Session::set('message', 'Họ tên phải có hai chữ cái trở lên');
-    redirect('../');
+  if (count(explode(' ', $ho_ten)) < 2) {
+    Session::set('message', 'Họ tên phải từ ít nhất 2 từ trở lên.');
+    redirect('../dang-ky.php');
   }
 
   try {
